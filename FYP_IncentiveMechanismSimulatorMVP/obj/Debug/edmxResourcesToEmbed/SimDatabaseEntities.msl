@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SimDatabaseStoreContainer" CdmEntityContainer="SimDatabaseEntities">
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SimDatabase.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SimDatabase.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SimDatabase.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SimDatabase.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimDatabase.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SimDatabase.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimDatabase.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SimDatabase.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SimDatabase.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="Bids">
+      <EntityTypeMapping TypeName="SimDatabase.Bids">
+        <MappingFragment StoreEntitySet="Bids">
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+          <ScalarProperty Name="Success" ColumnName="Success" />
+          <ScalarProperty Name="DataQuality" ColumnName="DataQuality" />
+          <ScalarProperty Name="DataQty" ColumnName="DataQty" />
+          <ScalarProperty Name="ResourceQty" ColumnName="ResourceQty" />
+          <ScalarProperty Name="AmountBid" ColumnName="AmountBid" />
+          <ScalarProperty Name="Fid" ColumnName="Fid" />
+          <ScalarProperty Name="Pid" ColumnName="Pid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FederationHistory">
+      <EntityTypeMapping TypeName="SimDatabase.FederationHistory">
+        <MappingFragment StoreEntitySet="FederationHistory">
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+          <ScalarProperty Name="ModelQuality" ColumnName="ModelQuality" />
+          <ScalarProperty Name="MarketShare" ColumnName="MarketShare" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="TimeLeftInState" ColumnName="TimeLeftInState" />
+          <ScalarProperty Name="Asset" ColumnName="Asset" />
+          <ScalarProperty Name="Turn" ColumnName="Turn" />
+          <ScalarProperty Name="Progression" ColumnName="Progression" />
+          <ScalarProperty Name="Fid" ColumnName="Fid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FederationParticipantsHistory">
+      <EntityTypeMapping TypeName="SimDatabase.FederationParticipantsHistory">
+        <MappingFragment StoreEntitySet="FederationParticipantsHistory">
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+          <ScalarProperty Name="Fid" ColumnName="Fid" />
+          <ScalarProperty Name="BidAmount" ColumnName="BidAmount" />
+          <ScalarProperty Name="DataQualityCommitted" ColumnName="DataQualityCommitted" />
+          <ScalarProperty Name="DataQuantityCommitted" ColumnName="DataQuantityCommitted" />
+          <ScalarProperty Name="ResourceCommitted" ColumnName="ResourceCommitted" />
+          <ScalarProperty Name="Pid" ColumnName="Pid" />
+          <ScalarProperty Name="Turn" ColumnName="Turn" />
+          <ScalarProperty Name="Progression" ColumnName="Progression" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Federations">
+      <EntityTypeMapping TypeName="SimDatabase.Federations">
+        <MappingFragment StoreEntitySet="Federations">
+          <ScalarProperty Name="AdmissionPolicyId" ColumnName="AdmissionPolicyId" />
+          <ScalarProperty Name="SchemeAdopted" ColumnName="SchemeAdopted" />
+          <ScalarProperty Name="FederationAsset" ColumnName="FederationAsset" />
+          <ScalarProperty Name="Fid" ColumnName="Fid" />
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GameInstance">
+      <EntityTypeMapping TypeName="SimDatabase.GameInstance">
+        <MappingFragment StoreEntitySet="GameInstance">
+          <ScalarProperty Name="MarketShareFederationPct" ColumnName="MarketShareFederationPct" />
+          <ScalarProperty Name="MaxTurns" ColumnName="MaxTurns" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="InitAmountTh" ColumnName="InitAmountTh" />
+          <ScalarProperty Name="InitResourceQuantityTh" ColumnName="InitResourceQuantityTh" />
+          <ScalarProperty Name="InitDataQuantityTh" ColumnName="InitDataQuantityTh" />
+          <ScalarProperty Name="InitDataQualityTh" ColumnName="InitDataQualityTh" />
+          <ScalarProperty Name="MaxResourceQuantity" ColumnName="MaxResourceQuantity" />
+          <ScalarProperty Name="MinResourceQuantity" ColumnName="MinResourceQuantity" />
+          <ScalarProperty Name="DataQuantityWeight" ColumnName="DataQuantityWeight" />
+          <ScalarProperty Name="DataQualityWeight" ColumnName="DataQualityWeight" />
+          <ScalarProperty Name="MaxDataQuantity" ColumnName="MaxDataQuantity" />
+          <ScalarProperty Name="MinDataQuantity" ColumnName="MinDataQuantity" />
+          <ScalarProperty Name="MaxDataQUality" ColumnName="MaxDataQUality" />
+          <ScalarProperty Name="MinDataQuality" ColumnName="MinDataQuality" />
+          <ScalarProperty Name="NumPlayers" ColumnName="NumPlayers" />
+          <ScalarProperty Name="NumFederations" ColumnName="NumFederations" />
+          <ScalarProperty Name="MinProfitLength" ColumnName="MinProfitLength" />
+          <ScalarProperty Name="MinBidLength" ColumnName="MinBidLength" />
+          <ScalarProperty Name="MaxTrainingLength" ColumnName="MaxTrainingLength" />
+          <ScalarProperty Name="MinTrainingLength" ColumnName="MinTrainingLength" />
+          <ScalarProperty Name="StartingAsset" ColumnName="StartingAsset" />
+          <ScalarProperty Name="MarketShare" ColumnName="MarketShare" />
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InTrainings">
+      <EntityTypeMapping TypeName="SimDatabase.InTrainings">
+        <MappingFragment StoreEntitySet="InTrainings">
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+          <ScalarProperty Name="BidAmount" ColumnName="BidAmount" />
+          <ScalarProperty Name="ResourceQuantity" ColumnName="ResourceQuantity" />
+          <ScalarProperty Name="DataQuantity" ColumnName="DataQuantity" />
+          <ScalarProperty Name="DataQuality" ColumnName="DataQuality" />
+          <ScalarProperty Name="Turn" ColumnName="Turn" />
+          <ScalarProperty Name="Progression" ColumnName="Progression" />
+          <ScalarProperty Name="Fid" ColumnName="Fid" />
+          <ScalarProperty Name="Pid" ColumnName="Pid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParticipantHistory">
+      <EntityTypeMapping TypeName="SimDatabase.ParticipantHistory">
+        <MappingFragment StoreEntitySet="ParticipantHistory">
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+          <ScalarProperty Name="ResourceQuantity" ColumnName="ResourceQuantity" />
+          <ScalarProperty Name="DataQuality" ColumnName="DataQuality" />
+          <ScalarProperty Name="DataQuantity" ColumnName="DataQuantity" />
+          <ScalarProperty Name="Asset" ColumnName="Asset" />
+          <ScalarProperty Name="Turn" ColumnName="Turn" />
+          <ScalarProperty Name="Progression" ColumnName="Progression" />
+          <ScalarProperty Name="Pid" ColumnName="Pid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Participants">
+      <EntityTypeMapping TypeName="SimDatabase.Participants">
+        <MappingFragment StoreEntitySet="Participants">
+          <ScalarProperty Name="HumanPlayer" ColumnName="HumanPlayer" />
+          <ScalarProperty Name="Strategy" ColumnName="Strategy" />
+          <ScalarProperty Name="Pid" ColumnName="Pid" />
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SimDatabase.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TableTest">
+      <EntityTypeMapping TypeName="SimDatabase.TableTest">
+        <MappingFragment StoreEntitySet="TableTest">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

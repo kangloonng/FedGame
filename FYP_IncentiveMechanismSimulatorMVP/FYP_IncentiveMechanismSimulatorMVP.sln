@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FYP_IncentiveMechanismSimulatorMVP", "FYP_IncentiveMechanismSimulatorMVP.csproj", "{9334E4AB-3FE9-41EC-888F-6C69913CE73B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9334E4AB-3FE9-41EC-888F-6C69913CE73B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9334E4AB-3FE9-41EC-888F-6C69913CE73B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9334E4AB-3FE9-41EC-888F-6C69913CE73B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9334E4AB-3FE9-41EC-888F-6C69913CE73B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC69BFB9-F975-46D5-B688-685AC94F2AEC}
+	EndGlobalSection
+EndGlobal

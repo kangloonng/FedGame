@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SimDatabase" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="SimDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SimDatabase.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SimDatabase.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Bids" EntityType="SimDatabase.Bids" />
+    <EntitySet Name="FederationHistory" EntityType="SimDatabase.FederationHistory" />
+    <EntitySet Name="FederationParticipantsHistory" EntityType="SimDatabase.FederationParticipantsHistory" />
+    <EntitySet Name="Federations" EntityType="SimDatabase.Federations" />
+    <EntitySet Name="GameInstance" EntityType="SimDatabase.GameInstance" />
+    <EntitySet Name="InTrainings" EntityType="SimDatabase.InTrainings" />
+    <EntitySet Name="ParticipantHistory" EntityType="SimDatabase.ParticipantHistory" />
+    <EntitySet Name="Participants" EntityType="SimDatabase.Participants" />
+    <EntitySet Name="sysdiagrams" EntityType="SimDatabase.sysdiagrams" />
+    <EntitySet Name="TableTest" EntityType="SimDatabase.TableTest" />
+    <AssociationSet Name="FK_Bids_Federations" Association="SimDatabase.FK_Bids_Federations">
+      <End Role="Federations" EntitySet="Federations" />
+      <End Role="Bids" EntitySet="Bids" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bids_Participants" Association="SimDatabase.FK_Bids_Participants">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="Bids" EntitySet="Bids" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FederationHistory_Federations" Association="SimDatabase.FK_FederationHistory_Federations">
+      <End Role="Federations" EntitySet="Federations" />
+      <End Role="FederationHistory" EntitySet="FederationHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FederationParticipantsHistory_Federations" Association="SimDatabase.FK_FederationParticipantsHistory_Federations">
+      <End Role="Federations" EntitySet="Federations" />
+      <End Role="FederationParticipantsHistory" EntitySet="FederationParticipantsHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FederationParticipantsHistory_Participants" Association="SimDatabase.FK_FederationParticipantsHistory_Participants">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="FederationParticipantsHistory" EntitySet="FederationParticipantsHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Federations_GameInstance" Association="SimDatabase.FK_Federations_GameInstance">
+      <End Role="GameInstance" EntitySet="GameInstance" />
+      <End Role="Federations" EntitySet="Federations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InTrainings_Federations" Association="SimDatabase.FK_InTrainings_Federations">
+      <End Role="Federations" EntitySet="Federations" />
+      <End Role="InTrainings" EntitySet="InTrainings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Participants_GameInstance" Association="SimDatabase.FK_Participants_GameInstance">
+      <End Role="GameInstance" EntitySet="GameInstance" />
+      <End Role="Participants" EntitySet="Participants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InTrainings_Participants" Association="SimDatabase.FK_InTrainings_Participants">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="InTrainings" EntitySet="InTrainings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParticipantHistory_Participants" Association="SimDatabase.FK_ParticipantHistory_Participants">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="ParticipantHistory" EntitySet="ParticipantHistory" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Bids">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pid" Type="Int32" Nullable="false" />
+    <Property Name="Fid" Type="Int32" Nullable="false" />
+    <Property Name="AmountBid" Type="Double" Nullable="false" />
+    <Property Name="ResourceQty" Type="Int32" Nullable="false" />
+    <Property Name="DataQty" Type="Double" Nullable="false" />
+    <Property Name="DataQuality" Type="Double" Nullable="false" />
+    <Property Name="Success" Type="Boolean" Nullable="false" />
+    <Property Name="Gid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Federations" Relationship="SimDatabase.FK_Bids_Federations" FromRole="Bids" ToRole="Federations" />
+    <NavigationProperty Name="Participants" Relationship="SimDatabase.FK_Bids_Participants" FromRole="Bids" ToRole="Participants" />
+  </EntityType>
+  <EntityType Name="FederationHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Fid" Type="Int32" Nullable="false" />
+    <Property Name="Progression" Type="Double" Nullable="false" />
+    <Property Name="Turn" Type="Double" Nullable="false" />
+    <Property Name="Asset" Type="Double" Nullable="false" />
+    <Property Name="TimeLeftInState" Type="Double" Nullable="false" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MarketShare" Type="Double" Nullable="false" />
+    <Property Name="ModelQuality" Type="Double" Nullable="false" />
+    <Property Name="Gid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Federations" Relationship="SimDatabase.FK_FederationHistory_Federations" FromRole="FederationHistory" ToRole="Federations" />
+  </EntityType>
+  <EntityType Name="FederationParticipantsHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Progression" Type="Double" Nullable="false" />
+    <Property Name="Turn" Type="Double" Nullable="false" />
+    <Property Name="Pid" Type="Int32" Nullable="false" />
+    <Property Name="ResourceCommitted" Type="Int32" Nullable="false" />
+    <Property Name="DataQuantityCommitted" Type="Double" Nullable="false" />
+    <Property Name="DataQualityCommitted" Type="Double" Nullable="false" />
+    <Property Name="BidAmount" Type="Double" Nullable="false" />
+    <Property Name="Fid" Type="Int32" Nullable="false" />
+    <Property Name="Gid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Federations" Relationship="SimDatabase.FK_FederationParticipantsHistory_Federations" FromRole="FederationParticipantsHistory" ToRole="Federations" />
+    <NavigationProperty Name="Participants" Relationship="SimDatabase.FK_FederationParticipantsHistory_Participants" FromRole="FederationParticipantsHistory" ToRole="Participants" />
+  </EntityType>
+  <EntityType Name="Federations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Gid" Type="Int32" Nullable="false" />
+    <Property Name="Fid" Type="Int32" Nullable="false" />
+    <Property Name="FederationAsset" Type="Double" Nullable="false" />
+    <Property Name="SchemeAdopted" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdmissionPolicyId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bids" Relationship="SimDatabase.FK_Bids_Federations" FromRole="Federations" ToRole="Bids" />
+    <NavigationProperty Name="FederationHistory" Relationship="SimDatabase.FK_FederationHistory_Federations" FromRole="Federations" ToRole="FederationHistory" />
+    <NavigationProperty Name="FederationParticipantsHistory" Relationship="SimDatabase.FK_FederationParticipantsHistory_Federations" FromRole="Federations" ToRole="FederationParticipantsHistory" />
+    <NavigationProperty Name="GameInstance" Relationship="SimDatabase.FK_Federations_GameInstance" FromRole="Federations" ToRole="GameInstance" />
+    <NavigationProperty Name="InTrainings" Relationship="SimDatabase.FK_InTrainings_Federations" FromRole="Federations" ToRole="InTrainings" />
+  </EntityType>
+  <EntityType Name="GameInstance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Gid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MarketShare" Type="Double" Nullable="false" />
+    <Property Name="StartingAsset" Type="Double" Nullable="false" />
+    <Property Name="MinTrainingLength" Type="Double" Nullable="false" />
+    <Property Name="MaxTrainingLength" Type="Double" Nullable="false" />
+    <Property Name="MinBidLength" Type="Double" Nullable="false" />
+    <Property Name="MinProfitLength" Type="Double" Nullable="false" />
+    <Property Name="NumFederations" Type="Int32" Nullable="false" />
+    <Property Name="NumPlayers" Type="Int32" Nullable="false" />
+    <Property Name="MinDataQuality" Type="Double" Nullable="false" />
+    <Property Name="MaxDataQUality" Type="Double" Nullable="false" />
+    <Property Name="MinDataQuantity" Type="Double" Nullable="false" />
+    <Property Name="MaxDataQuantity" Type="Double" Nullable="false" />
+    <Property Name="DataQualityWeight" Type="Double" Nullable="false" />
+    <Property Name="DataQuantityWeight" Type="Double" Nullable="false" />
+    <Property Name="MinResourceQuantity" Type="Int32" Nullable="false" />
+    <Property Name="MaxResourceQuantity" Type="Int32" Nullable="false" />
+    <Property Name="InitDataQualityTh" Type="Double" Nullable="false" />
+    <Property Name="InitDataQuantityTh" Type="Double" Nullable="false" />
+    <Property Name="InitResourceQuantityTh" Type="Int32" Nullable="false" />
+    <Property Name="InitAmountTh" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Federations" Relationship="SimDatabase.FK_Federations_GameInstance" FromRole="GameInstance" ToRole="Federations" />
+    <NavigationProperty Name="Participants" Relationship="SimDatabase.FK_Participants_GameInstance" FromRole="GameInstance" ToRole="Participants" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="MaxTurns" Type="Int32" Nullable="false" />
+    <Property Name="MarketShareFederationPct" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InTrainings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Pid" Type="Int32" Nullable="false" />
+    <Property Name="Fid" Type="Int32" Nullable="false" />
+    <Property Name="Progression" Type="Double" Nullable="false" />
+    <Property Name="Turn" Type="Double" Nullable="false" />
+    <Property Name="DataQuality" Type="Double" Nullable="false" />
+    <Property Name="DataQuantity" Type="Double" Nullable="false" />
+    <Property Name="ResourceQuantity" Type="Int32" Nullable="false" />
+    <Property Name="BidAmount" Type="Double" Nullable="false" />
+    <Property Name="Gid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Federations" Relationship="SimDatabase.FK_InTrainings_Federations" FromRole="InTrainings" ToRole="Federations" />
+    <NavigationProperty Name="Participants" Relationship="SimDatabase.FK_InTrainings_Participants" FromRole="InTrainings" ToRole="Participants" />
+  </EntityType>
+  <EntityType Name="ParticipantHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Pid" Type="Int32" Nullable="false" />
+    <Property Name="Progression" Type="Double" Nullable="false" />
+    <Property Name="Turn" Type="Double" Nullable="false" />
+    <Property Name="Asset" Type="Double" Nullable="false" />
+    <Property Name="DataQuantity" Type="Double" Nullable="false" />
+    <Property Name="DataQuality" Type="Double" Nullable="false" />
+    <Property Name="ResourceQuantity" Type="Int32" Nullable="false" />
+    <Property Name="Gid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Participants" Relationship="SimDatabase.FK_ParticipantHistory_Participants" FromRole="ParticipantHistory" ToRole="Participants" />
+  </EntityType>
+  <EntityType Name="Participants">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Gid" Type="Int32" Nullable="false" />
+    <Property Name="Pid" Type="Int32" Nullable="false" />
+    <Property Name="Strategy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HumanPlayer" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Bids" Relationship="SimDatabase.FK_Bids_Participants" FromRole="Participants" ToRole="Bids" />
+    <NavigationProperty Name="FederationParticipantsHistory" Relationship="SimDatabase.FK_FederationParticipantsHistory_Participants" FromRole="Participants" ToRole="FederationParticipantsHistory" />
+    <NavigationProperty Name="GameInstance" Relationship="SimDatabase.FK_Participants_GameInstance" FromRole="Participants" ToRole="GameInstance" />
+    <NavigationProperty Name="InTrainings" Relationship="SimDatabase.FK_InTrainings_Participants" FromRole="Participants" ToRole="InTrainings" />
+    <NavigationProperty Name="ParticipantHistory" Relationship="SimDatabase.FK_ParticipantHistory_Participants" FromRole="Participants" ToRole="ParticipantHistory" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TableTest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK_Bids_Federations">
+    <End Type="SimDatabase.Federations" Role="Federations" Multiplicity="1" />
+    <End Type="SimDatabase.Bids" Role="Bids" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Federations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bids">
+        <PropertyRef Name="Fid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bids_Participants">
+    <End Type="SimDatabase.Participants" Role="Participants" Multiplicity="1" />
+    <End Type="SimDatabase.Bids" Role="Bids" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bids">
+        <PropertyRef Name="Pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FederationHistory_Federations">
+    <End Type="SimDatabase.Federations" Role="Federations" Multiplicity="1" />
+    <End Type="SimDatabase.FederationHistory" Role="FederationHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Federations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FederationHistory">
+        <PropertyRef Name="Fid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FederationParticipantsHistory_Federations">
+    <End Type="SimDatabase.Federations" Role="Federations" Multiplicity="1" />
+    <End Type="SimDatabase.FederationParticipantsHistory" Role="FederationParticipantsHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Federations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FederationParticipantsHistory">
+        <PropertyRef Name="Fid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FederationParticipantsHistory_Participants">
+    <End Type="SimDatabase.Participants" Role="Participants" Multiplicity="1" />
+    <End Type="SimDatabase.FederationParticipantsHistory" Role="FederationParticipantsHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FederationParticipantsHistory">
+        <PropertyRef Name="Pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Federations_GameInstance">
+    <End Type="SimDatabase.GameInstance" Role="GameInstance" Multiplicity="1" />
+    <End Type="SimDatabase.Federations" Role="Federations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GameInstance">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Federations">
+        <PropertyRef Name="Gid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InTrainings_Federations">
+    <End Type="SimDatabase.Federations" Role="Federations" Multiplicity="1" />
+    <End Type="SimDatabase.InTrainings" Role="InTrainings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Federations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InTrainings">
+        <PropertyRef Name="Fid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Participants_GameInstance">
+    <End Type="SimDatabase.GameInstance" Role="GameInstance" Multiplicity="1" />
+    <End Type="SimDatabase.Participants" Role="Participants" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GameInstance">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Participants">
+        <PropertyRef Name="Gid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InTrainings_Participants">
+    <End Type="SimDatabase.Participants" Role="Participants" Multiplicity="1" />
+    <End Type="SimDatabase.InTrainings" Role="InTrainings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InTrainings">
+        <PropertyRef Name="Pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParticipantHistory_Participants">
+    <End Type="SimDatabase.Participants" Role="Participants" Multiplicity="1" />
+    <End Type="SimDatabase.ParticipantHistory" Role="ParticipantHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ParticipantHistory">
+        <PropertyRef Name="Pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

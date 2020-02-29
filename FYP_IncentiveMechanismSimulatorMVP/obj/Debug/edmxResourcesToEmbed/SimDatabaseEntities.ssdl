@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SimDatabase.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="Bids">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pid" Type="int" Nullable="false" />
+    <Property Name="Fid" Type="int" Nullable="false" />
+    <Property Name="AmountBid" Type="float" Nullable="false" />
+    <Property Name="ResourceQty" Type="int" Nullable="false" />
+    <Property Name="DataQty" Type="float" Nullable="false" />
+    <Property Name="DataQuality" Type="float" Nullable="false" />
+    <Property Name="Success" Type="bit" Nullable="false" />
+    <Property Name="Gid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FederationHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fid" Type="int" Nullable="false" />
+    <Property Name="Progression" Type="float" Nullable="false" />
+    <Property Name="Turn" Type="float" Nullable="false" />
+    <Property Name="Asset" Type="float" Nullable="false" />
+    <Property Name="TimeLeftInState" Type="float" Nullable="false" />
+    <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MarketShare" Type="float" Nullable="false" />
+    <Property Name="ModelQuality" Type="float" Nullable="false" />
+    <Property Name="Gid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FederationParticipantsHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Progression" Type="float" Nullable="false" />
+    <Property Name="Turn" Type="float" Nullable="false" />
+    <Property Name="Pid" Type="int" Nullable="false" />
+    <Property Name="ResourceCommitted" Type="int" Nullable="false" />
+    <Property Name="DataQuantityCommitted" Type="float" Nullable="false" />
+    <Property Name="DataQualityCommitted" Type="float" Nullable="false" />
+    <Property Name="BidAmount" Type="float" Nullable="false" />
+    <Property Name="Fid" Type="int" Nullable="false" />
+    <Property Name="Gid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Federations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Gid" Type="int" Nullable="false" />
+    <Property Name="Fid" Type="int" Nullable="false" />
+    <Property Name="FederationAsset" Type="float" Nullable="false" />
+    <Property Name="SchemeAdopted" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdmissionPolicyId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GameInstance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Gid" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="MarketShare" Type="float" Nullable="false" />
+    <Property Name="MarketShareFederationPct" Type="float" Nullable="false" />
+    <Property Name="StartingAsset" Type="float" Nullable="false" />
+    <Property Name="MinTrainingLength" Type="float" Nullable="false" />
+    <Property Name="MaxTrainingLength" Type="float" Nullable="false" />
+    <Property Name="MinBidLength" Type="float" Nullable="false" />
+    <Property Name="MinProfitLength" Type="float" Nullable="false" />
+    <Property Name="NumFederations" Type="int" Nullable="false" />
+    <Property Name="NumPlayers" Type="int" Nullable="false" />
+    <Property Name="MaxTurns" Type="int" Nullable="false" />
+    <Property Name="MinDataQuality" Type="float" Nullable="false" />
+    <Property Name="MaxDataQUality" Type="float" Nullable="false" />
+    <Property Name="MinDataQuantity" Type="float" Nullable="false" />
+    <Property Name="MaxDataQuantity" Type="float" Nullable="false" />
+    <Property Name="DataQualityWeight" Type="float" Nullable="false" />
+    <Property Name="DataQuantityWeight" Type="float" Nullable="false" />
+    <Property Name="MinResourceQuantity" Type="int" Nullable="false" />
+    <Property Name="MaxResourceQuantity" Type="int" Nullable="false" />
+    <Property Name="InitDataQualityTh" Type="float" Nullable="false" />
+    <Property Name="InitDataQuantityTh" Type="float" Nullable="false" />
+    <Property Name="InitResourceQuantityTh" Type="int" Nullable="false" />
+    <Property Name="InitAmountTh" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InTrainings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pid" Type="int" Nullable="false" />
+    <Property Name="Fid" Type="int" Nullable="false" />
+    <Property Name="Progression" Type="float" Nullable="false" />
+    <Property Name="Turn" Type="float" Nullable="false" />
+    <Property Name="DataQuality" Type="float" Nullable="false" />
+    <Property Name="DataQuantity" Type="float" Nullable="false" />
+    <Property Name="ResourceQuantity" Type="int" Nullable="false" />
+    <Property Name="BidAmount" Type="float" Nullable="false" />
+    <Property Name="Gid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ParticipantHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pid" Type="int" Nullable="false" />
+    <Property Name="Progression" Type="float" Nullable="false" />
+    <Property Name="Turn" Type="float" Nullable="false" />
+    <Property Name="Asset" Type="float" Nullable="false" />
+    <Property Name="DataQuantity" Type="float" Nullable="false" />
+    <Property Name="DataQuality" Type="float" Nullable="false" />
+    <Property Name="ResourceQuantity" Type="int" Nullable="false" />
+    <Property Name="Gid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Participants">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Gid" Type="int" Nullable="false" />
+    <Property Name="Pid" Type="int" Nullable="false" />
+    <Property Name="Strategy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="HumanPlayer" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TableTest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Bids_Federations">
+    <End Role="Federations" Type="Self.Federations" Multiplicity="1" />
+    <End Role="Bids" Type="Self.Bids" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Federations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bids">
+        <PropertyRef Name="Fid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bids_Participants">
+    <End Role="Participants" Type="Self.Participants" Multiplicity="1" />
+    <End Role="Bids" Type="Self.Bids" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bids">
+        <PropertyRef Name="Pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FederationHistory_Federations">
+    <End Role="Federations" Type="Self.Federations" Multiplicity="1" />
+    <End Role="FederationHistory" Type="Self.FederationHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Federations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FederationHistory">
+        <PropertyRef Name="Fid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FederationParticipantsHistory_Federations">
+    <End Role="Federations" Type="Self.Federations" Multiplicity="1" />
+    <End Role="FederationParticipantsHistory" Type="Self.FederationParticipantsHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Federations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FederationParticipantsHistory">
+        <PropertyRef Name="Fid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FederationParticipantsHistory_Participants">
+    <End Role="Participants" Type="Self.Participants" Multiplicity="1" />
+    <End Role="FederationParticipantsHistory" Type="Self.FederationParticipantsHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FederationParticipantsHistory">
+        <PropertyRef Name="Pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Federations_GameInstance">
+    <End Role="GameInstance" Type="Self.GameInstance" Multiplicity="1" />
+    <End Role="Federations" Type="Self.Federations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GameInstance">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Federations">
+        <PropertyRef Name="Gid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InTrainings_Federations">
+    <End Role="Federations" Type="Self.Federations" Multiplicity="1" />
+    <End Role="InTrainings" Type="Self.InTrainings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Federations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InTrainings">
+        <PropertyRef Name="Fid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InTrainings_Participants">
+    <End Role="Participants" Type="Self.Participants" Multiplicity="1" />
+    <End Role="InTrainings" Type="Self.InTrainings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InTrainings">
+        <PropertyRef Name="Pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParticipantHistory_Participants">
+    <End Role="Participants" Type="Self.Participants" Multiplicity="1" />
+    <End Role="ParticipantHistory" Type="Self.ParticipantHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ParticipantHistory">
+        <PropertyRef Name="Pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Participants_GameInstance">
+    <End Role="GameInstance" Type="Self.GameInstance" Multiplicity="1" />
+    <End Role="Participants" Type="Self.Participants" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GameInstance">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Participants">
+        <PropertyRef Name="Gid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="SimDatabaseStoreContainer">
+    <EntitySet Name="Bids" EntityType="Self.Bids" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FederationHistory" EntityType="Self.FederationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FederationParticipantsHistory" EntityType="Self.FederationParticipantsHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Federations" EntityType="Self.Federations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GameInstance" EntityType="Self.GameInstance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InTrainings" EntityType="Self.InTrainings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ParticipantHistory" EntityType="Self.ParticipantHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Participants" EntityType="Self.Participants" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TableTest" EntityType="Self.TableTest" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Bids_Federations" Association="Self.FK_Bids_Federations">
+      <End Role="Federations" EntitySet="Federations" />
+      <End Role="Bids" EntitySet="Bids" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bids_Participants" Association="Self.FK_Bids_Participants">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="Bids" EntitySet="Bids" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FederationHistory_Federations" Association="Self.FK_FederationHistory_Federations">
+      <End Role="Federations" EntitySet="Federations" />
+      <End Role="FederationHistory" EntitySet="FederationHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FederationParticipantsHistory_Federations" Association="Self.FK_FederationParticipantsHistory_Federations">
+      <End Role="Federations" EntitySet="Federations" />
+      <End Role="FederationParticipantsHistory" EntitySet="FederationParticipantsHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FederationParticipantsHistory_Participants" Association="Self.FK_FederationParticipantsHistory_Participants">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="FederationParticipantsHistory" EntitySet="FederationParticipantsHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Federations_GameInstance" Association="Self.FK_Federations_GameInstance">
+      <End Role="GameInstance" EntitySet="GameInstance" />
+      <End Role="Federations" EntitySet="Federations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InTrainings_Federations" Association="Self.FK_InTrainings_Federations">
+      <End Role="Federations" EntitySet="Federations" />
+      <End Role="InTrainings" EntitySet="InTrainings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InTrainings_Participants" Association="Self.FK_InTrainings_Participants">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="InTrainings" EntitySet="InTrainings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParticipantHistory_Participants" Association="Self.FK_ParticipantHistory_Participants">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="ParticipantHistory" EntitySet="ParticipantHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Participants_GameInstance" Association="Self.FK_Participants_GameInstance">
+      <End Role="GameInstance" EntitySet="GameInstance" />
+      <End Role="Participants" EntitySet="Participants" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
