@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.bottomRightPanel = new System.Windows.Forms.Panel();
@@ -219,6 +219,7 @@
             // 
             // bodyPanelBR
             // 
+            this.bodyPanelBR.AutoScroll = true;
             this.bodyPanelBR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bodyPanelBR.Location = new System.Drawing.Point(0, 61);
             this.bodyPanelBR.Name = "bodyPanelBR";
@@ -659,18 +660,18 @@
             this.columnChart1.BackColor = System.Drawing.Color.Transparent;
             this.columnChart1.BorderlineColor = System.Drawing.Color.WhiteSmoke;
             this.columnChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.BackColor = System.Drawing.Color.Transparent;
-            legend4.Name = "Legend1";
-            this.columnChart1.Legends.Add(legend4);
+            legend1.BackColor = System.Drawing.Color.Transparent;
+            legend1.Name = "Legend1";
+            this.columnChart1.Legends.Add(legend1);
             this.columnChart1.Location = new System.Drawing.Point(0, 0);
             this.columnChart1.Name = "columnChart1";
             this.columnChart1.Size = new System.Drawing.Size(470, 207);
             this.columnChart1.TabIndex = 1;
             this.columnChart1.Text = "chart1";
-            title4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title4.Name = "Title1";
-            title4.Text = "Distribution of Data";
-            this.columnChart1.Titles.Add(title4);
+            title1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "Title1";
+            title1.Text = "Distribution of Data";
+            this.columnChart1.Titles.Add(title1);
             // 
             // panel11
             // 
@@ -685,18 +686,18 @@
             // 
             this.lineComparisonChart.BackColor = System.Drawing.Color.Transparent;
             this.lineComparisonChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend5.BackColor = System.Drawing.Color.Transparent;
-            legend5.Name = "Legend1";
-            this.lineComparisonChart.Legends.Add(legend5);
+            legend2.BackColor = System.Drawing.Color.Transparent;
+            legend2.Name = "Legend1";
+            this.lineComparisonChart.Legends.Add(legend2);
             this.lineComparisonChart.Location = new System.Drawing.Point(0, 0);
             this.lineComparisonChart.Name = "lineComparisonChart";
             this.lineComparisonChart.Size = new System.Drawing.Size(470, 207);
             this.lineComparisonChart.TabIndex = 2;
             this.lineComparisonChart.Text = "chart1";
-            title5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title5.Name = "Title1";
-            title5.Text = "Top 3 Player\'s profit gained v.s. You";
-            this.lineComparisonChart.Titles.Add(title5);
+            title2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title2.Name = "Title1";
+            title2.Text = "Top 3 Player\'s profit gained v.s. You";
+            this.lineComparisonChart.Titles.Add(title2);
             // 
             // demographPanel1
             // 
@@ -924,7 +925,7 @@
             this.tableLayoutPanel7.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 211F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(606, 216);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
@@ -942,20 +943,20 @@
             this.chart2.BackColor = System.Drawing.Color.Transparent;
             this.chart2.BorderlineColor = System.Drawing.Color.Transparent;
             this.chart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend6.BackColor = System.Drawing.Color.Transparent;
-            legend6.Name = "Legend1";
-            this.chart2.Legends.Add(legend6);
+            legend3.BackColor = System.Drawing.Color.Transparent;
+            legend3.Name = "Legend1";
+            this.chart2.Legends.Add(legend3);
             this.chart2.Location = new System.Drawing.Point(0, 0);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
             this.chart2.Size = new System.Drawing.Size(600, 205);
             this.chart2.TabIndex = 3;
             this.chart2.Text = "chart2";
-            title6.BackColor = System.Drawing.Color.Transparent;
-            title6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title6.Name = "Title1";
-            title6.Text = "Avg on Participants\' data";
-            this.chart2.Titles.Add(title6);
+            title3.BackColor = System.Drawing.Color.Transparent;
+            title3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title3.Name = "Title1";
+            title3.Text = "Avg on Participants\' data";
+            this.chart2.Titles.Add(title3);
             // 
             // bodyPanelTR
             // 
