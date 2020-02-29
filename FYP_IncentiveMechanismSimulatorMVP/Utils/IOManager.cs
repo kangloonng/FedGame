@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Xml;
 using FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic;
-using Python.Runtime;
+//using Python.Runtime;
 
 namespace FYP_IncentiveMechanismSimulatorMVP.Utils
 {
@@ -12,6 +12,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
     {
         public IOManager() { }
         #region Python IO tbi
+        /*
         public List<string> GetStringSchemeTypes()
         {
             List<string> schemeTypeList = new List<string>();
@@ -67,7 +68,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
 
 
             return tempList;
-        }
+        }*/
         #endregion 
         public void ReInitSettings()
         {         
