@@ -908,9 +908,9 @@
             this.bottomPanelFedStats.AutoScroll = true;
             this.bottomPanelFedStats.Controls.Add(this.tableLayoutPanel7);
             this.bottomPanelFedStats.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bottomPanelFedStats.Location = new System.Drawing.Point(0, 329);
+            this.bottomPanelFedStats.Location = new System.Drawing.Point(0, 238);
             this.bottomPanelFedStats.Name = "bottomPanelFedStats";
-            this.bottomPanelFedStats.Size = new System.Drawing.Size(606, 125);
+            this.bottomPanelFedStats.Size = new System.Drawing.Size(606, 216);
             this.bottomPanelFedStats.TabIndex = 1;
             // 
             // tableLayoutPanel7
@@ -925,7 +925,7 @@
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(606, 125);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(606, 216);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // panel16
@@ -934,7 +934,7 @@
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel16.Location = new System.Drawing.Point(3, 8);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(600, 114);
+            this.panel16.Size = new System.Drawing.Size(600, 205);
             this.panel16.TabIndex = 0;
             // 
             // chart2
@@ -948,7 +948,7 @@
             this.chart2.Location = new System.Drawing.Point(0, 0);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            this.chart2.Size = new System.Drawing.Size(600, 114);
+            this.chart2.Size = new System.Drawing.Size(600, 205);
             this.chart2.TabIndex = 3;
             this.chart2.Text = "chart2";
             title6.BackColor = System.Drawing.Color.Transparent;
@@ -964,7 +964,7 @@
             this.bodyPanelTR.Dock = System.Windows.Forms.DockStyle.Top;
             this.bodyPanelTR.Location = new System.Drawing.Point(0, 28);
             this.bodyPanelTR.Name = "bodyPanelTR";
-            this.bodyPanelTR.Size = new System.Drawing.Size(606, 301);
+            this.bodyPanelTR.Size = new System.Drawing.Size(606, 210);
             this.bodyPanelTR.TabIndex = 2;
             // 
             // panel15
@@ -973,7 +973,7 @@
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel15.Location = new System.Drawing.Point(0, 41);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(606, 260);
+            this.panel15.Size = new System.Drawing.Size(606, 169);
             this.panel15.TabIndex = 1;
             // 
             // panel14
@@ -1197,6 +1197,7 @@
             this.ClientSize = new System.Drawing.Size(1264, 749);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.firstPanel_titlePanel);
+            this.MaximizeBox = false;
             this.Name = "GameMenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GameMenuForm";
