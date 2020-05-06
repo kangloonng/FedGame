@@ -42,7 +42,6 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
 
             this.federationId_comboBox.SelectedIndex = 0;
             ProcessLabels();
-
         }
 
         #region getset for interface
@@ -153,6 +152,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
             this.resourceQuantity_comboBox.Enabled = false;
             this.bidAmount_txtbox.Enabled = false;
             this.bid_btn.Enabled = false;
+            this.leave_btn.Visible = false;
         }
         private void ProcessLabels()
         {
@@ -200,6 +200,10 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
                 this.bidAmount_txtbox.Text = "$0";
                 this.resourceQuantity_comboBox.SelectedIndex = 0;
             }
+
+            //default for buttons
+            this.leave_btn.Visible = false;
+            this.bid_btn.Text = "Bid";
         }
         private void ChangeInFederationSelected()
         {
@@ -222,6 +226,8 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
                     this.bidAmount_txtbox.Text = "$" + this._bid.AmountBid.ToString();
                     this.bid_btn.Text = "Edit";
                     this._bidFormType = 1;
+                    this.leave_btn.Visible = true;
+                    this.leave_btn.Text = "Remove";
                 }
             }
             else
@@ -230,11 +236,14 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
                 biddedDataQuantity = (int)((_inTraining.DataCommitted.DataQuantity / _player.DataOwned.DataQuantity) * 100);
                 biddedResourceQuantity = this._inTraining.ResourceCommited.AssignedQty;
                 this.bidAmount_txtbox.Text = this._inTraining.AdmissionAmt.ToString();// "participating"; //+ this._bid.AmountBid.ToString();
-                this.bidAmount_txtbox.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Italic);
+                this.bidAmount_txtbox.Font = new Font("Arial Narrow", 14, FontStyle.Italic);
 
                 //this.dataQuality_comboBox.DropDownStyle = ComboBoxStyle.Simple;
                 this.bidAmount_txtbox.Enabled = false;
                 this._bidFormType = 2;
+                this.bid_btn.Text = "Edit";
+                this.leave_btn.Visible = true;
+                this.leave_btn.Text = "Leave";
             }
 
             this.dataQuality_comboBox.SelectedIndex = this.dataQuality_comboBox.FindString(biddedDataQuality.ToString());
@@ -244,31 +253,38 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
 
         private void bid_btn_Click(object sender, EventArgs e)
         {
-            int result = 0;
-            if(this._bidFormType == 0)
+            int result = 0,res=0;
+            string messageBoxText = "Success";
+
+            if (this._bidFormType == 0)
             {
                 //new bid
+                res = this.ShowMessageBox("Submit Bid");
                 result = this._presenter.AddBid(this.playerBid);
             }
             else if(this._bidFormType == 1)
             {
                 //Edit of bid
+                res = this.ShowMessageBox("Edit Bid");
                 result = this._presenter.EditBid(this.playerBid);
             }
             else if (this._bidFormType == 2)
             {
                 //Edit of allocated resources
+                res = this.ShowMessageBox("Edit Resources");
                 result = this._presenter.EditInTraining(this.playerTraining);
             }
 
-            string messageBoxText ="Success";
-            if (result == -1)
-                messageBoxText = "Error in form";
+            if (res == 1)
+            {
+                if (result == -1)
+                    messageBoxText = "Error in form";
 
-            DialogResult end = MessageBox.Show(messageBoxText, "Bidding Form", MessageBoxButtons.OK);
+                DialogResult end = MessageBox.Show(messageBoxText, "Bidding Form", MessageBoxButtons.OK);
 
-            if(result!=-1)
-                this.Close();
+                if (result != -1)
+                    this.Close();
+            }
         }
 
         private void close_btn_Click(object sender, EventArgs e)
@@ -282,5 +298,55 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
             this.ChangeInFederationSelected();
         }
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int result = 0,res =0;
+            string messageBoxText = "Success";
+            if (this._bidFormType == 0)
+            {
+            }
+            else if (this._bidFormType == 1)
+            {
+                //Remove
+                res = this.ShowMessageBox("Remove Bid");
+                if(res == 1)
+                    result = this._presenter.RemoveBid(this.playerBid);
+            }
+            else if (this._bidFormType == 2)
+            {
+                res = this.ShowMessageBox("Leave Federation");
+                if (res == 1)
+                    //Edit of allocated resources
+                    result = this._presenter.RemoveInTraining(this.playerTraining);
+            }
+
+            if (res == 1)
+            {
+                if (result == -1)
+                    messageBoxText = "Error in form";
+
+                DialogResult end = MessageBox.Show(messageBoxText, "Bidding Form", MessageBoxButtons.OK);
+
+                if (result != -1)
+                    this.Close();
+            }
+        }
+
+        private int ShowMessageBox(string stringType)
+        {
+            int result = 0;
+            DialogResult res = MessageBox.Show("Confirm "+stringType+"?", "End Turn", MessageBoxButtons.YesNo);
+            if (res == DialogResult.Yes)
+            {
+                result = 1;
+
+            }
+            else if (res == DialogResult.No)
+            {
+                result = 0;
+            }
+            return result;
+        }
     }
 }

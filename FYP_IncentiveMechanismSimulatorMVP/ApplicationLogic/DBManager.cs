@@ -65,7 +65,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
             {
                 Fid = f.FederationId,
                 FederationAsset = f.FederationAsset,
-                SchemeAdopted = f.sc.SchemeName,
+                SchemeAdopted = f.SchemeName,
                 AdmissionPolicyId = 1 //f.AdmissionPolicy
             };
 
@@ -76,7 +76,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
             var tempObj = new Participants()
             {
                 Pid = p.Pid,
-                Strategy = p.LocalStrategy.StrategyName,
+                Strategy = p.AgentName,
                 HumanPlayer = b
             };
 
@@ -160,92 +160,157 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
         }
         #endregion
 
-        public void saveGameInstance()
+        public void saveGameInstance(int type)
         {
-            /*
-            var id = Guid.NewGuid().ToString();
-            //string servername = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""H:\FYP Current\FYP_IncentiveMechanismSimulatorMVP\SimDatabase.mdf"";Integrated Security=True";
-            string servername = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""D:\FYP Current\FYP_IncentiveMechanismSimulatorMVP\SimDatabase.mdf"";Integrated Security=True";
-            //string servername2 = "Server=(LocalDB)\\MSSQLLocalDB;Database=Database1.mdf;Integrated Security=True;";
-            //MySqlConnection test = new MySqlConnection(servername2);
-            System.Data.SqlClient.SqlConnection con = new System.Data.SqlClient.SqlConnection();
-            con.ConnectionString = servername;
-            con.Open();
-            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-            cmd.CommandType = System.Data.CommandType.Text;
+            if (type == 1)
+            {
+                var id = Guid.NewGuid().ToString();
+                string servername = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""H:\FYP Current\FYP_IncentiveMechanismSimulatorMVP\SimDatabase.mdf"";Integrated Security=True";
+                //string servername = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""D:\FYP Current\FYP_IncentiveMechanismSimulatorMVP\SimDatabase.mdf"";Integrated Security=True";
+                //string servername2 = "Server=(LocalDB)\\MSSQLLocalDB;Database=Database1.mdf;Integrated Security=True;";
+                //MySqlConnection test = new MySqlConnection(servername2);
+                System.Data.SqlClient.SqlConnection con = new System.Data.SqlClient.SqlConnection();
+                con.ConnectionString = servername;
+                con.Open();
+                System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
+                cmd.CommandType = System.Data.CommandType.Text;
 
-            cmd.CommandText = "INSERT INTO GameInstance(Gid,MarketShare,StartingAsset,MinTrainingLength,MaxTrainingLength,MinBidLength,MinProfitLength,NumFederations," +
-                "NumPlayers,MinDataQuality,MaxDataQuality,MinDataQuantity,MaxDataQuantity,DataQualityWeight,DataQuantityWeight,MinResourceQuantity,MaxResourceQuantity,InitDataQualityTH,InitDataQuantityTH," +
-                "InitResourceQuantityTh,InitAmountTh,MaxTurns,MarketShareFederationPct) " +
-                "VALUES('" + _gameInstance.Gid + "'," + _gameInstance.MarketShare + "," + _gameInstance.StartingAsset + "," + _gameInstance.MinTrainingLength + "," + _gameInstance.MaxTrainingLength
-                + "," + _gameInstance.MinBidLength + "," + _gameInstance.MinProfitLength + "," + _gameInstance.NumFederations + "," + _gameInstance.NumPlayers
-                + "," + _gameInstance.MinDataQuality + "," + _gameInstance.MaxDataQUality + "," + _gameInstance.MinDataQuantity + "," + _gameInstance.MaxDataQuantity
-                + "," + _gameInstance.DataQualityWeight + "," + _gameInstance.DataQuantityWeight + "," + _gameInstance.MinResourceQuantity + "," + _gameInstance.MaxResourceQuantity
-                + "," + _gameInstance.InitDataQualityTh + "," + _gameInstance.InitDataQuantityTh + "," + _gameInstance.InitResourceQuantityTh + "," + _gameInstance.InitAmountTh + ","+_gameInstance.MaxTurns+","+_gameInstance.MarketShareFederationPct+ ")";
-            cmd.Connection = con;
-            cmd.ExecuteNonQuery();
-            int gid = 0;
+                cmd.CommandText = "INSERT INTO GameInstance(Gid,MarketShare,StartingAsset,MinTrainingLength,MaxTrainingLength,MinBidLength,MinProfitLength,NumFederations," +
+                    "NumPlayers,MinDataQuality,MaxDataQuality,MinDataQuantity,MaxDataQuantity,DataQualityWeight,DataQuantityWeight,MinResourceQuantity,MaxResourceQuantity,InitDataQualityTH,InitDataQuantityTH," +
+                    "InitResourceQuantityTh,InitAmountTh,MaxTurns,MarketShareFederationPct) " +
+                    "VALUES('" + _gameInstance.Gid + "'," + _gameInstance.MarketShare + "," + _gameInstance.StartingAsset + "," + _gameInstance.MinTrainingLength + "," + _gameInstance.MaxTrainingLength
+                    + "," + _gameInstance.MinBidLength + "," + _gameInstance.MinProfitLength + "," + _gameInstance.NumFederations + "," + _gameInstance.NumPlayers
+                    + "," + _gameInstance.MinDataQuality + "," + _gameInstance.MaxDataQUality + "," + _gameInstance.MinDataQuantity + "," + _gameInstance.MaxDataQuantity
+                    + "," + _gameInstance.DataQualityWeight + "," + _gameInstance.DataQuantityWeight + "," + _gameInstance.MinResourceQuantity + "," + _gameInstance.MaxResourceQuantity
+                    + "," + _gameInstance.InitDataQualityTh + "," + _gameInstance.InitDataQuantityTh + "," + _gameInstance.InitResourceQuantityTh + "," + _gameInstance.InitAmountTh + "," + _gameInstance.MaxTurns + "," + _gameInstance.MarketShareFederationPct + ")";
+                cmd.Connection = con;
+                cmd.ExecuteNonQuery();
+                int gid = 0;
 
-            cmd.CommandText = "SELECT Id FROM GameInstance WHERE Gid='" + _gameInstance.Gid + "'";
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
-                gid = (int)reader["Id"];// Console.WriteLine("Game Instance Index "+reader["Id"]);
-            reader.Close();
+                cmd.CommandText = "SELECT Id FROM GameInstance WHERE Gid='" + _gameInstance.Gid + "'";
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                    gid = (int)reader["Id"];// Console.WriteLine("Game Instance Index "+reader["Id"]);
+                reader.Close();
 
-            foreach(Federations f in this._federationList)
-            {
-                cmd.CommandText = "INSERT INTO Federations(Gid,Fid,FederationAsset,SchemeAdopted,AdmissionPolicyId) VALUES ("+ 
-                    gid+","+f.Fid+","+f.FederationAsset+",'"+f.SchemeAdopted+"',"+f.AdmissionPolicyId+ ")";
-                cmd.ExecuteNonQuery();
-            }
-            foreach(Participants p in this._participantsList)
-            {
-                int bit = 0;
-                if (p.HumanPlayer)
-                    bit = 1;
-                cmd.CommandText = "INSERT INTO Participants(Gid,Pid,Strategy,HumanPlayer) VALUES (" +
-                    gid+","+p.Pid + ",'" + p.Strategy + "'," + bit + ")";
-                cmd.ExecuteNonQuery();
-            }
+                foreach (Federations f in this._federationList)
+                {
+                    cmd.CommandText = "INSERT INTO Federations(Gid,Fid,FederationAsset,SchemeAdopted,AdmissionPolicyId) VALUES (" +
+                        gid + "," + f.Fid + "," + f.FederationAsset + ",'" + f.SchemeAdopted + "'," + f.AdmissionPolicyId + ")";
+                    cmd.ExecuteNonQuery();
+                }
+                foreach (Participants p in this._participantsList)
+                {
+                    int bit = 0;
+                    if (p.HumanPlayer)
+                        bit = 1;
+                    cmd.CommandText = "INSERT INTO Participants(Gid,Pid,Strategy,HumanPlayer) VALUES (" +
+                        gid + "," + p.Pid + ",'" + p.Strategy + "'," + bit + ")";
+                    cmd.ExecuteNonQuery();
+                }
 
-            foreach(Bids b in this._bidsHistory)
-            {
-                int bit = 0;
-                if (b.Success)
-                    bit = 1;
-                cmd.CommandText = "INSERT INTO Bids(Gid,Pid,Fid,AmountBid,ResourceQty,DataQty,DataQuality,Success) VALUES (" +
-                    gid+","+b.Pid + "," +b.Fid + "," +b.AmountBid + "," + b.AmountBid +"," +b.DataQty + "," +b.DataQuality + "," +bit +")";
-                cmd.ExecuteNonQuery();
-            }
+                foreach (Bids b in this._bidsHistory)
+                {
+                    int bit = 0;
+                    if (b.Success)
+                        bit = 1;
+                    cmd.CommandText = "INSERT INTO Bids(Gid,Pid,Fid,AmountBid,ResourceQty,DataQty,DataQuality,Success) VALUES (" +
+                        gid + "," + b.Pid + "," + b.Fid + "," + b.AmountBid + "," + b.AmountBid + "," + b.DataQty + "," + b.DataQuality + "," + bit + ")";
+                    cmd.ExecuteNonQuery();
+                }
 
-            foreach(InTrainings t in this._inTrainingList)
-            {
-                cmd.CommandText = "INSERT INTO InTrainings(Pid,Fid,Progression,Turn,DataQuality,DataQuantity,ResourceQuantity,BidAmount,Gid) VALUES(" +
-                    t.Pid+","+t.Fid + ","+t.Progression + ","+t.Turn + ","+t.DataQuality + ","+t.DataQuantity + ","+t.ResourceQuantity + ","+t.BidAmount + ","+gid+")";
-                cmd.ExecuteNonQuery();
+                foreach (InTrainings t in this._inTrainingList)
+                {
+                    cmd.CommandText = "INSERT INTO InTrainings(Pid,Fid,Progression,Turn,DataQuality,DataQuantity,ResourceQuantity,BidAmount,Gid) VALUES(" +
+                        t.Pid + "," + t.Fid + "," + t.Progression + "," + t.Turn + "," + t.DataQuality + "," + t.DataQuantity + "," + t.ResourceQuantity + "," + t.BidAmount + "," + gid + ")";
+                    cmd.ExecuteNonQuery();
+                }
+                foreach (FederationHistory fh in this._federationHistory)
+                {
+                    cmd.CommandText = "INSERT INTO FederationHistory(Fid,Progression,Turn,Asset,TimeLeftInState,State,MarketShare,ModelQuality,Gid) VALUES(" +
+                        fh.Fid + "," + fh.Progression + "," + fh.Turn + "," + fh.Asset + "," + fh.TimeLeftInState + ",'" + fh.State + "'," +
+                        fh.MarketShare + "," + fh.ModelQuality + "," + gid + ")";
+                    cmd.ExecuteNonQuery();
+                }
+                foreach (FederationParticipantsHistory fph in this._federationParticipantsHistory)
+                {
+                    cmd.CommandText = "INSERT INTO FederationParticipantsHistory(Progression,Turn,Pid,ResourceCommitted,DataQuantityCommitted,DataQualityCommitted,BidAmount,Fid,Gid) VALUES(" +
+                        fph.Progression + "," + fph.Turn + "," + fph.Pid + "," + fph.ResourceCommitted + "," + fph.DataQuantityCommitted + "," + fph.DataQualityCommitted
+                        + "," + fph.BidAmount + "," + fph.Fid + "," + gid + ")";
+                    cmd.ExecuteNonQuery();
+                }
+                foreach (ParticipantHistory ph in this.ParticipantsHistoryList)
+                {
+                    cmd.CommandText = "INSERT INTO ParticipantHistory(Pid,Progression,Turn,Asset,DataQuantity,DataQuality,ResourceQuantity,Gid) VALUES(" +
+                        ph.Pid + "," + ph.Progression + "," + ph.Turn + "," + ph.Asset + "," + ph.DataQuantity + "," + ph.DataQuality + "," + ph.ResourceQuantity + "," + gid + ")";
+                    cmd.ExecuteNonQuery();
+                }
+                con.Close();
+
             }
-            foreach(FederationHistory fh in this._federationHistory)
+            else
             {
-                cmd.CommandText = "INSERT INTO FederationHistory(Fid,Progression,Turn,Asset,TimeLeftInState,State,MarketShare,ModelQuality,Gid) VALUES(" +
-                    fh.Fid + "," + fh.Progression + "," + fh.Turn + "," + fh.Asset + "," + fh.TimeLeftInState + ",'" + fh.State + "',"+ 
-                    fh.MarketShare +","+fh.ModelQuality + ","+ gid +")";
-                cmd.ExecuteNonQuery();
+                StringBuilder sb = new StringBuilder();
+                sb.Append("INSERT INTO GameInstance(Gid,MarketShare,StartingAsset,MinTrainingLength,MaxTrainingLength,MinBidLength,MinProfitLength,NumFederations," +
+    "NumPlayers,MinDataQuality,MaxDataQuality,MinDataQuantity,MaxDataQuantity,DataQualityWeight,DataQuantityWeight,MinResourceQuantity,MaxResourceQuantity,InitDataQualityTH,InitDataQuantityTH," +
+    "InitResourceQuantityTh,InitAmountTh,MaxTurns,MarketShareFederationPct) " +
+    "VALUES('" + _gameInstance.Gid + "'," + _gameInstance.MarketShare + "," + _gameInstance.StartingAsset + "," + _gameInstance.MinTrainingLength + "," + _gameInstance.MaxTrainingLength
+    + "," + _gameInstance.MinBidLength + "," + _gameInstance.MinProfitLength + "," + _gameInstance.NumFederations + "," + _gameInstance.NumPlayers
+    + "," + _gameInstance.MinDataQuality + "," + _gameInstance.MaxDataQUality + "," + _gameInstance.MinDataQuantity + "," + _gameInstance.MaxDataQuantity
+    + "," + _gameInstance.DataQualityWeight + "," + _gameInstance.DataQuantityWeight + "," + _gameInstance.MinResourceQuantity + "," + _gameInstance.MaxResourceQuantity
+    + "," + _gameInstance.InitDataQualityTh + "," + _gameInstance.InitDataQuantityTh + "," + _gameInstance.InitResourceQuantityTh + "," + _gameInstance.InitAmountTh + "," + _gameInstance.MaxTurns + "," + _gameInstance.MarketShareFederationPct + ")"+Environment.NewLine);
+                
+                string gid = _gameInstance.Gid;
+
+                foreach (Federations f in this._federationList)
+                {
+                    sb.Append("INSERT INTO Federations(Gid,Fid,FederationAsset,SchemeAdopted,AdmissionPolicyId) VALUES (" +
+                        gid + "," + f.Fid + "," + f.FederationAsset + ",'" + f.SchemeAdopted + "'," + f.AdmissionPolicyId + ")" + Environment.NewLine);
+                }
+                foreach (Participants p in this._participantsList)
+                {
+                    int bit = 0;
+                    if (p.HumanPlayer)
+                        bit = 1;
+                    sb.Append("INSERT INTO Participants(Gid,Pid,Strategy,HumanPlayer) VALUES (" +
+                        gid + "," + p.Pid + ",'" + p.Strategy + "'," + bit + ")" + Environment.NewLine);
+                }
+
+                foreach (Bids b in this._bidsHistory)
+                {
+                    int bit = 0;
+                    if (b.Success)
+                        bit = 1;
+                    sb.Append("INSERT INTO Bids(Gid,Pid,Fid,AmountBid,ResourceQty,DataQty,DataQuality,Success) VALUES (" +
+                        gid + "," + b.Pid + "," + b.Fid + "," + b.AmountBid + "," + b.AmountBid + "," + b.DataQty + "," + b.DataQuality + "," + bit + ")" + Environment.NewLine);
+                }
+
+                foreach (InTrainings t in this._inTrainingList)
+                {
+                    sb.Append("INSERT INTO InTrainings(Pid,Fid,Progression,Turn,DataQuality,DataQuantity,ResourceQuantity,BidAmount,Gid) VALUES(" +
+                        t.Pid + "," + t.Fid + "," + t.Progression + "," + t.Turn + "," + t.DataQuality + "," + t.DataQuantity + "," + t.ResourceQuantity + "," + t.BidAmount + "," + gid + ")" + Environment.NewLine);
+                }
+                foreach (FederationHistory fh in this._federationHistory)
+                {
+                   sb.Append("INSERT INTO FederationHistory(Fid,Progression,Turn,Asset,TimeLeftInState,State,MarketShare,ModelQuality,Gid) VALUES(" +
+                        fh.Fid + "," + fh.Progression + "," + fh.Turn + "," + fh.Asset + "," + fh.TimeLeftInState + ",'" + fh.State + "'," +
+                        fh.MarketShare + "," + fh.ModelQuality + "," + gid + ")" + Environment.NewLine);
+                }
+                foreach (FederationParticipantsHistory fph in this._federationParticipantsHistory)
+                {
+                    sb.Append("INSERT INTO FederationParticipantsHistory(Progression,Turn,Pid,ResourceCommitted,DataQuantityCommitted,DataQualityCommitted,BidAmount,Fid,Gid) VALUES(" +
+                        fph.Progression + "," + fph.Turn + "," + fph.Pid + "," + fph.ResourceCommitted + "," + fph.DataQuantityCommitted + "," + fph.DataQualityCommitted
+                        + "," + fph.BidAmount + "," + fph.Fid + "," + gid + ")" + Environment.NewLine);
+                }
+                foreach (ParticipantHistory ph in this.ParticipantsHistoryList)
+                {
+                    sb.Append("INSERT INTO ParticipantHistory(Pid,Progression,Turn,Asset,DataQuantity,DataQuality,ResourceQuantity,Gid) VALUES(" +
+                        ph.Pid + "," + ph.Progression + "," + ph.Turn + "," + ph.Asset + "," + ph.DataQuantity + "," + ph.DataQuality + "," + ph.ResourceQuantity + "," + gid + ")" + Environment.NewLine);
+                }
+
+                Utils.IOManager tempIO = new Utils.IOManager();
+                tempIO.CreateTextFile(sb.ToString());
             }
-            foreach(FederationParticipantsHistory fph in this._federationParticipantsHistory)
-            {
-                cmd.CommandText = "INSERT INTO FederationParticipantsHistory(Progression,Turn,Pid,ResourceCommitted,DataQuantityCommitted,DataQualityCommitted,BidAmount,Fid,Gid) VALUES(" +
-                    fph.Progression + ","+ fph.Turn + ","+ fph.Pid + ","+ fph.ResourceCommitted + ","+ fph.DataQuantityCommitted + ","+ fph.DataQualityCommitted
-                    + ","+ fph.BidAmount + ","+ fph.Fid + ","+ gid+")";
-                cmd.ExecuteNonQuery();
-            }
-            foreach(ParticipantHistory ph in this.ParticipantsHistoryList)
-            {
-                cmd.CommandText = "INSERT INTO ParticipantHistory(Pid,Progression,Turn,Asset,DataQuantity,DataQuality,ResourceQuantity,Gid) VALUES(" +
-                    ph.Pid + ","+ ph.Progression + ","+ ph.Turn + ","+ ph.Asset + ","+ph.DataQuantity + ","+ ph.DataQuality + ","+ ph.ResourceQuantity + ","+ gid +")";
-                cmd.ExecuteNonQuery();
-            }
-            con.Close();
-            */
         }
     }
 }

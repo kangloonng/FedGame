@@ -13,8 +13,8 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
         public double MAX_TRAINING_LENGTH { get; }
         public double MIN_BID_LENGTH { get; }
         public double MIN_PROFIT_LENGTH { get; }
-        public int NUM_OF_FEDERATIONS { get; }
-        public int NUM_OF_PLAYERS { get; }
+        public int NUM_OF_FEDERATIONS { get; internal set; }
+        public int NUM_OF_PLAYERS { get; internal set; }
         public double MIN_DATA_QUALITY { get; }
         public double MAX_DATA_QUALITY { get; }
         public double MIN_DATA_QUANTITY { get; }
@@ -45,7 +45,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
             MIN_BID_LENGTH = ConvertToDouble((GetValue("Environment_Settings", "MIN_BID_LENGTH")));
             MIN_PROFIT_LENGTH = ConvertToDouble((GetValue("Environment_Settings", "MIN_PROFIT_LENGTH")));
             NUM_OF_FEDERATIONS = ConvertToInt((GetValue("Environment_Settings", "NUM_OF_FEDERATIONS")));
-            NUM_OF_PLAYERS = ConvertToInt((GetValue("Environment_Settings", "NUM_OF_CPU_PLAYERS")));
+            NUM_OF_PLAYERS = ConvertToInt((GetValue("Environment_Settings", "NUM_OF_CPU_PLAYERS")))+1;
             MAX_TURNS = ConvertToInt((GetValue("Environment_Settings", "MAX_TURNS")));
             MIN_DATA_QUALITY = ConvertToDouble((GetValue("Environment_Settings", "MIN_DATA_QUALITY")));
             MAX_DATA_QUALITY = ConvertToDouble((GetValue("Environment_Settings", "MAX_DATA_QUALITY")));

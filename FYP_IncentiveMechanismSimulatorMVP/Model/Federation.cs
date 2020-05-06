@@ -11,17 +11,17 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
         public List<Player> ParticipantList { get; set; }
         public double MarketShare { get; set; }
         public Admission AdmissionPolicy { get; set; }
-        public Scheme sc { get; set; }
+        public string SchemeName { get; set; }
         public double CollabTrainingQuality { get; set; }
         public StateEnum Current_state { get; set; }
         public double TimeLeftInState { get; set; }
         public double FederationAsset { get; set; }
         public List<double> FederationMarketShareHistory { get; set; }
-        public Federation(int fid, Admission admission, Scheme sc, double timeLeftInState)
+        public Federation(int fid, Admission admission, string sc, double timeLeftInState)
         {
             this.FederationId = fid;
             this.AdmissionPolicy = admission;
-            this.sc = sc;
+            this.SchemeName = sc;
 
             this.MarketShare = 0;
             this.CollabTrainingQuality = 0;
@@ -83,33 +83,36 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
                 int nextState = ((int)this.Current_state + 1) % Enum.GetNames(typeof(StateEnum)).Length;
                 int oldState = (int)this.Current_state;
                 this.Current_state = (StateEnum)nextState;
+                //Train to Profit
                 if((StateEnum) oldState == StateEnum.TRAIN_ROUND)
                 {
                     this.CalculateCollabTQ(dataQualityWeight, dataQuantityWeight);
                 }
+                //Profit to Bid
                 else if((StateEnum) oldState == StateEnum.PROFIT_ROUND)
                 {
                     this.TimeLeftInState = double.PositiveInfinity;
                     //this.DisseminateProfits();
                 }
                 this.TimeLeftInState = double.PositiveInfinity;
-
             }
         }
 
         public void CalculateCollabTQ(double dataQualityWeight, double dataQuantityWeight)
         {
-            sc.totalTrainingQuality = 0;
+            //sc.totalTrainingQuality = 0;
             Utils.Logger tempLog = new Utils.Logger();
             List<double> trainingQualityList = new List<double>();
             foreach(Player p in this.ParticipantList)
             {
+                /*
                 tempLog.PrintConsoleMessage("PROCESS_TRAINING", "Player " + p.Pid + " submitted");
                 tempLog.PrintConsoleMessage("Data ", "Quality ->" + p.DataOwned.DataQuality + " Quantity ->" + p.DataOwned.DataQuantity);
                 tempLog.PrintConsoleMessage("Resource", "Quantity ->" + p.ResourceOwned.AssignedQty);
+                */
                 double valueOfData = (p.DataOwned.DataQuality * dataQualityWeight) + (p.DataOwned.DataQuantity * dataQuantityWeight);
                 trainingQualityList.Add(valueOfData);
-                sc.totalTrainingQuality += valueOfData;
+               // sc.totalTrainingQuality += valueOfData;
             }
             //Rounding
             double maxValue = trainingQualityList.Max();
@@ -127,6 +130,9 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
             double sdev = Math.Sqrt(ssd / values.Count);
             return sdev;
         }
+
+        //TO SHIFT TO SchemeManager
+        /*
         public List<Tuple<int,double>> DisseminateProfits(double marketPct, double dataQualityWeight, double dataQuantityWeight)
         {
             Utils.Logger templog = new Utils.Logger();
@@ -150,7 +156,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
             return tupleList;
 
             //double toSplit = this.sc.CalculateProfitShare(playerList,this.MarketShare,Constants.FIXED_MARKETSHARE);
-        }
+        }*/
         private double calculateTrainingQuality(Player p, double dataQualityWeight, double dataQuantityWeight)
         {
             return (p.DataOwned.DataQuality * dataQualityWeight) + (p.DataOwned.DataQuantity * dataQuantityWeight);

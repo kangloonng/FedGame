@@ -79,5 +79,15 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap transparentbg_Header_v2 {
+            get {
+                object obj = ResourceManager.GetObject("transparentbg Header v2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

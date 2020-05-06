@@ -1,0 +1,35 @@
+Instructions: 
+-This is to initialize a testable environment by pre-allocating player's hand and the type of Incentive Scheme to be in the environment. 
+-Current Schemes: (Indexes follow list initialization in IncentiveSchemes.py)
+ -0: Equal
+ -1: Indi
+ -2: Linear
+ -3: Union
+ -4: Shapley
+ -5: Lyapunov
+
+-For players/ agents. Please follow the following indexes  (Indexes follow case statement in PlayersManager.c)
+ -0: Human
+ -1: Equal Distribution
+ -x: Others.
+
+#Player,Federations
+10,6
+#Player param: Id, Data Quality, Data Quantity, Asset, Resource, AgentType
+1, 0.7, 0.3, 500, 2, 0
+2, 0.3, 0.3, 500, 1, 1
+3, 0.3, 0.3, 500, 1, 1
+4, 0.3, 0.3, 500, 1, 1
+5, 0.8, 0.8, 500, 3, 1
+6, 0.8, 0.8, 500, 3, 1
+7, 0.8, 0.8, 500, 3, 1
+8, 0.5, 0.5, 500, 2, 1
+9, 0.5, 0.5, 500, 2, 1
+10, 0.5, 0.5, 500, 2, 1
+#Federation param: Id, Scheme Index, Starting Asset
+1, 0, -1
+2, 1, -1
+3, 2, -1
+4, 3, -1
+5, 4, -1
+6, 5, -1

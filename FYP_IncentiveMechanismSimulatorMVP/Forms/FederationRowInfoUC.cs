@@ -20,9 +20,10 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
             this.fedIdLbl.Text = f.FederationId.ToString();
             this.fedMarketshare.Text = (f.MarketShare * 100) + "%";
             this.fedNoParticipantsLbl.Text = f.ParticipantList.Count.ToString();
-            this.fedSchemeLbl.Text = f.sc.SchemeName;
+            this.fedSchemeLbl.Text = f.SchemeName;
             this.fedStateLbl.Text = f.Current_state.ToString();
             this.fedTimeLbl.Text = f.TimeLeftInState.ToString();
+            this.fedAssetLbl.Text = "$"+f.FederationAsset.ToString();
         }
         public void EditLabel(Federation f)
         {
@@ -30,9 +31,10 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
             this.fedIdLbl.Text = f.FederationId.ToString();
             this.fedMarketshare.Text = (f.MarketShare * 100) + "%";
             this.fedNoParticipantsLbl.Text = f.ParticipantList.Count.ToString();
-            this.fedSchemeLbl.Text = f.sc.SchemeName;
+            this.fedSchemeLbl.Text = f.SchemeName;
             this.fedStateLbl.Text = f.Current_state.ToString();
             this.fedTimeLbl.Text = f.TimeLeftInState.ToString();
+            this.fedAssetLbl.Text = "$" + f.FederationAsset.ToString();
         }
     }
 }

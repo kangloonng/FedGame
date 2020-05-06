@@ -4,15 +4,58 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Xml;
 using FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic;
-//using Python.Runtime;
+using Python.Runtime;
 
 namespace FYP_IncentiveMechanismSimulatorMVP.Utils
 {
     public class IOManager
     {
-        public IOManager() { }
+        private string incentive_py_file_path = "";
+        public string database_server { get; set; }
+        public IOManager() 
+        {
+            //TODO INIT OF FILE PATHS
+            try
+            {
+                string settingsFilepathName = "FilePathSettings.txt";
+                string text = File.ReadAllText(Environment.CurrentDirectory + "\\" + settingsFilepathName);
+                string[] textList = text.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+                foreach(string s in textList)
+                {
+                    Console.WriteLine(s);
+                    if(s!="")
+                        this.assignVariables(s);
+                }
+                int i = 0;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("FilePathSettings.txt not found in \\bin\\Debug " +
+                    "\nPlease ensure that text file is in the path");
+                Environment.Exit(0);
+            }
+        }
+
+        private void assignVariables(string text)
+        {
+            string[] textSplit = text.Split('=');
+            string header = textSplit[0], path = textSplit[1].Replace("\"","");
+            Console.WriteLine(path);
+            switch (header)
+            {
+                case "incentive_py_file_path":                    
+                    if (path.Equals("default"))
+                        this.incentive_py_file_path = Environment.CurrentDirectory;
+                    else
+                        this.incentive_py_file_path = path;
+
+                    break;
+                default:
+                    Console.WriteLine("Error in FilePathSettings.txt");
+                    break;
+            }
+        }
         #region Python IO tbi
-        /*
         public List<string> GetStringSchemeTypes()
         {
             List<string> schemeTypeList = new List<string>();
@@ -24,51 +67,70 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
             return schemeTypeList;
         }
 
-        public void LoadPythonModules(SchemeManager schemeManager, StrategyManager strategyManager)
+        public PythonInterface LoadPythonModules()
         {
-            List<dynamic> tempList2 = importDynamicModules("Scheme", @"..\..\PythonFiles");
-            foreach (dynamic d in tempList2)
-            {
-                var p = d.scheme("test");
-                Console.WriteLine("Results :" + p.whatIsName());
-            }
+            var obj = this.importDynamicModules();
+            if (obj == null)
+                return null;
+
+            PythonInterface interface_python = new PythonInterface(obj);
+            return interface_python;
         }
-        public static List<dynamic> importDynamicModules(string keyword, string pathFolder)
+        public dynamic importDynamicModules()
         {
-            List<dynamic> tempList = new List<dynamic>();
-            // Setup all paths before initializing Python engine
-            string pathToPython = @"H:\FYP Current\FYP_IncentiveMechanismSimulatorMVP\PythonRuntime";
+            // Setup working directory for python files
+            string pathFolder = this.incentive_py_file_path;
+            string pathToPython = @"H:\FYP Current\DemoXMLPython\bin\Debug";
             string path = pathToPython + ";" +
                           Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.Machine);
             Environment.SetEnvironmentVariable("PATH", path, EnvironmentVariableTarget.Process);
             Environment.SetEnvironmentVariable("PYTHONHOME", pathToPython, EnvironmentVariableTarget.Process);
-
-            string[] fileNamearray = Directory.GetFiles(pathFolder, "*" + keyword + ".py");
+            //string[] fileNamearray = null;
+            //s
+            //try
+            //{
+            //    fileNamearray = Directory.GetFiles(pathFolder, "*Schemes.py");
+            //}catch(DirectoryNotFoundException e)
+            //{
+            //    Console.WriteLine(e.ToString());
+            //    ApplicationLogic.Simulation.Instance.EXIT_FLAG = -1;
+            //    return null;
+            //}
+            //string[] fileNamearray = Directory.GetFiles(pathFolder, "Test.py");
 
             var lib = new[]
-{
+            {
                 pathFolder,
                 Path.Combine(pathToPython, "Lib"),
                 Path.Combine(pathToPython, "DLLs")
             };
-
+            dynamic loadedModule = null;
             string paths = string.Join(";", lib);
             Environment.SetEnvironmentVariable("PYTHONPATH", null, EnvironmentVariableTarget.Process);
             Environment.SetEnvironmentVariable("PYTHONPATH", paths, EnvironmentVariableTarget.Process);
             using (Py.GIL())
             {
-                foreach (string s in fileNamearray)
+                //string moduleName = Path.GetFileName(this.incentive_py_file_path + "IncentiveSchemes.py");
+                //foreach (string s in fileNamearray)
+                //{
+                //    string moduleName = Path.GetFileName(s).Replace(".py", "");
+                //    //moduleName = moduleName.Replace("_", "");
+                //    loadedModule = Py.Import(moduleName);
+                //    Console.WriteLine("Loaded "+moduleName);
+                //}
+                try
                 {
-                    string moduleName = Path.GetFileName(s).Replace(".py", "");
-                    dynamic sampleModule = Py.Import(moduleName);
-
-                    tempList.Add(sampleModule);
+                    loadedModule = Py.Import("IncentiveSchemes");
+                    Console.WriteLine("Loaded " + loadedModule);
+                }catch(Exception e)
+                {
+                    Console.WriteLine("Exception caught " + e.ToString());
+                    Environment.Exit(0);
                 }
             }
 
-
-            return tempList;
-        }*/
+            return loadedModule;
+        }
         #endregion 
         public void ReInitSettings()
         {         
@@ -107,6 +169,24 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
         {
             string workingDirectory = Environment.CurrentDirectory+"\\Settings.xml";
             return XElement.Load(workingDirectory);
+        }
+
+        public void CreateTextFile(string content)
+        {
+            string fileName = "SqlCommands.txt";
+            string path = Environment.CurrentDirectory + "\\" + fileName;
+
+            File.AppendAllLines(path, new[] { content });
+
+        }
+
+        public  string GetFixedSettings()
+        {
+            //TODO move path to FilePathStrings file
+            string filepath = @"H:\FYP Current\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\FixedParams.txt";
+            string text = File.ReadAllText(filepath);
+
+            return text;
         }
     }
 }

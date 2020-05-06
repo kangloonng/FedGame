@@ -19,7 +19,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
             this.federationIndex_lbl.Text = federation.FederationId.ToString();
             this.trainingQuality_lbl.Text = (federation.CollabTrainingQuality*100).ToString()+"%";
             this.marketshare_lbl.Text = (federation.MarketShare*100).ToString()+"%";
-            this.scheme_lbl.Text = federation.sc.SchemeName;
+            this.scheme_lbl.Text = federation.SchemeName;
             this.participants_lbl.Text = federation.ParticipantString();//.Count.ToString(); //.ParticipantString();
             this.action_btn.Name = this.federationIndex_lbl.Text;
             this.state_lbl.Text = federation.Current_state.ToString();

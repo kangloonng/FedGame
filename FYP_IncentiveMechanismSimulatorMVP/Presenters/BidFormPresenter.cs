@@ -56,5 +56,19 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Presenters
             return 1;
 
         }
+
+        public int RemoveBid(Bid playerBid)
+        {
+            Simulation.Instance.RemoveBid(playerBid);
+
+            return 1;
+        }
+
+        public int RemoveInTraining(InTraining playerTraining)
+        {
+            Simulation.Instance.RemoveTraining(playerTraining);
+
+            return 1;
+        }
     }
 }

@@ -36,6 +36,7 @@
             this.fedMarketshare = new System.Windows.Forms.Label();
             this.fedSchemeLbl = new System.Windows.Forms.Label();
             this.fedNoParticipantsLbl = new System.Windows.Forms.Label();
+            this.fedAssetLbl = new System.Windows.Forms.Label();
             this.bodyPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -51,13 +52,15 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 6;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.29F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.05F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.1F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.13F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.16F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.27F));
+            this.tableLayoutPanel1.ColumnCount = 7;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.21F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.75F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.49F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.43F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.11F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.03F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.98F));
+            this.tableLayoutPanel1.Controls.Add(this.fedAssetLbl, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.fedIdLbl, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.fedTimeLbl, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.fedStateLbl, 2, 0);
@@ -80,7 +83,7 @@
             this.fedIdLbl.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fedIdLbl.Location = new System.Drawing.Point(3, 0);
             this.fedIdLbl.Name = "fedIdLbl";
-            this.fedIdLbl.Size = new System.Drawing.Size(44, 30);
+            this.fedIdLbl.Size = new System.Drawing.Size(37, 30);
             this.fedIdLbl.TabIndex = 0;
             this.fedIdLbl.Text = "label1";
             this.fedIdLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -90,9 +93,9 @@
             this.fedTimeLbl.AutoSize = true;
             this.fedTimeLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fedTimeLbl.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fedTimeLbl.Location = new System.Drawing.Point(53, 0);
+            this.fedTimeLbl.Location = new System.Drawing.Point(46, 0);
             this.fedTimeLbl.Name = "fedTimeLbl";
-            this.fedTimeLbl.Size = new System.Drawing.Size(54, 30);
+            this.fedTimeLbl.Size = new System.Drawing.Size(47, 30);
             this.fedTimeLbl.TabIndex = 1;
             this.fedTimeLbl.Text = "label2";
             this.fedTimeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -102,9 +105,9 @@
             this.fedStateLbl.AutoSize = true;
             this.fedStateLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fedStateLbl.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fedStateLbl.Location = new System.Drawing.Point(113, 0);
+            this.fedStateLbl.Location = new System.Drawing.Point(99, 0);
             this.fedStateLbl.Name = "fedStateLbl";
-            this.fedStateLbl.Size = new System.Drawing.Size(115, 30);
+            this.fedStateLbl.Size = new System.Drawing.Size(99, 30);
             this.fedStateLbl.TabIndex = 2;
             this.fedStateLbl.Text = "label3";
             this.fedStateLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -114,9 +117,9 @@
             this.fedMarketshare.AutoSize = true;
             this.fedMarketshare.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fedMarketshare.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fedMarketshare.Location = new System.Drawing.Point(234, 0);
+            this.fedMarketshare.Location = new System.Drawing.Point(204, 0);
             this.fedMarketshare.Name = "fedMarketshare";
-            this.fedMarketshare.Size = new System.Drawing.Size(73, 30);
+            this.fedMarketshare.Size = new System.Drawing.Size(63, 30);
             this.fedMarketshare.TabIndex = 3;
             this.fedMarketshare.Text = "label4";
             this.fedMarketshare.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -126,9 +129,9 @@
             this.fedSchemeLbl.AutoSize = true;
             this.fedSchemeLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fedSchemeLbl.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fedSchemeLbl.Location = new System.Drawing.Point(313, 0);
+            this.fedSchemeLbl.Location = new System.Drawing.Point(273, 0);
             this.fedSchemeLbl.Name = "fedSchemeLbl";
-            this.fedSchemeLbl.Size = new System.Drawing.Size(182, 30);
+            this.fedSchemeLbl.Size = new System.Drawing.Size(158, 30);
             this.fedSchemeLbl.TabIndex = 4;
             this.fedSchemeLbl.Text = "label5";
             this.fedSchemeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -138,12 +141,24 @@
             this.fedNoParticipantsLbl.AutoSize = true;
             this.fedNoParticipantsLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fedNoParticipantsLbl.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fedNoParticipantsLbl.Location = new System.Drawing.Point(501, 0);
+            this.fedNoParticipantsLbl.Location = new System.Drawing.Point(437, 0);
             this.fedNoParticipantsLbl.Name = "fedNoParticipantsLbl";
-            this.fedNoParticipantsLbl.Size = new System.Drawing.Size(102, 30);
+            this.fedNoParticipantsLbl.Size = new System.Drawing.Size(85, 30);
             this.fedNoParticipantsLbl.TabIndex = 5;
             this.fedNoParticipantsLbl.Text = "label1";
             this.fedNoParticipantsLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // fedAssetLbl
+            // 
+            this.fedAssetLbl.AutoSize = true;
+            this.fedAssetLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fedAssetLbl.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fedAssetLbl.Location = new System.Drawing.Point(528, 0);
+            this.fedAssetLbl.Name = "fedAssetLbl";
+            this.fedAssetLbl.Size = new System.Drawing.Size(75, 30);
+            this.fedAssetLbl.TabIndex = 6;
+            this.fedAssetLbl.Text = "label1";
+            this.fedAssetLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FederationRowInfoUC
             // 
@@ -169,5 +184,6 @@
         private System.Windows.Forms.Label fedMarketshare;
         private System.Windows.Forms.Label fedSchemeLbl;
         private System.Windows.Forms.Label fedNoParticipantsLbl;
+        private System.Windows.Forms.Label fedAssetLbl;
     }
 }

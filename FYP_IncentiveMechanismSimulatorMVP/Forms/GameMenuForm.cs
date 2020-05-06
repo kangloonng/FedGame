@@ -87,8 +87,8 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
             this.columnChart1.ChartAreas[0].CursorX.AutoScroll = true;
             this.columnChart1.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
 
-            double percentileDQlty = ((double)numLowerDQlty / this._playerList.Count) * 100;
-            double percentileDQty = ((double)numLowerDQty / this._playerList.Count) * 100;
+            double percentileDQlty = Math.Round(((double)numLowerDQlty / this._playerList.Count) * 100,2);
+            double percentileDQty = Math.Round(((double)numLowerDQty / this._playerList.Count) * 100,2);
 
             this.dataQltyPctLbl.Text = percentileDQlty.ToString()+"%";
             this.dataQtyPctLbl.Text = percentileDQty.ToString()+"%";
@@ -145,10 +145,13 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
                 sumList.Add(new Tuple<int, double>(pid, currentProfit));
             }
 
-            sumList = sumList.OrderByDescending(p => p.Item2).ToList();        
+            sumList = sumList.OrderByDescending(p => p.Item2).ToList();
 
-            
-            for (int i=0; i<3; i++)
+            int maxPlayer = 3;
+            if ((this._playerList.Count-1)<maxPlayer)
+                maxPlayer = this._playerList.Count-1;
+
+            for (int i=0; i<maxPlayer; i++)
             {
                 Player tempObj = this._playerList.Where(p => p.Pid == sumList[i].Item1).FirstOrDefault();
                 if (tempObj == null)
@@ -441,10 +444,12 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
             #region Quick View Panel
             if (this.quickViewPanel.Controls.Count == 0)
             {
+                var prevIndexPanel = -1;
                 for (int i = 0; i < this._federationList.Count; i++)
                 {
                     Panel fedQK_panel = new Panel();
-                    fedQK_panel.Dock = DockStyle.Top;
+                    fedQK_panel.Name = ""+i;
+                    //fedQK_panel.Dock = DockStyle.Top;
 
                     Label federationText = new Label();
                     Label federationStatusText = new Label();
@@ -540,14 +545,26 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
 
                     federationText.AutoSize = true;
                     federationStatusText.AutoSize = true;
-                    //playerJoined.AutoSize = true;
+                    playerJoined.AutoSize = true;
                     timeLeft.AutoSize = true;
 
-                    fedQK_panel.Height = 20;
+                    fedQK_panel.AutoSize = true;
                     this.quickViewPanel.Controls.Add(fedQK_panel);
+                    /*
+                    if (prevIndexPanel != -1)
+                    {
+                        this.quickViewPanel.Controls.SetChildIndex(fedQK_panel, prevIndexPanel);
+                        prevIndexPanel = this.quickViewPanel.Controls.IndexOf(this.quickViewPanel.Controls[i]);
+                    }
+                    else
+                    {
+                        this.quickViewPanel.Controls.SetChildIndex(fedQK_panel, -1);
+                        prevIndexPanel = this.quickViewPanel.Controls.IndexOf(fedQK_panel);
+                        Console.WriteLine("Index " + prevIndexPanel);
+                    }*/
 
-                    fedQK_panel.SendToBack();
-                    fedQK_panel.BringToFront();
+                    //fedQK_panel.SendToBack();
+                    //fedQK_panel.BringToFront();
                 }
             }
             else
@@ -555,7 +572,9 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
                 Player humanPlayer = this._playerList[0];
                 int fedIndex = 0;
                 //reverse order
-                for (int i = this.quickViewPanel.Controls.Count - 1; i >= 0; i--)
+                //for (int i = this.quickViewPanel.Controls.Count - 1; i >= 0; i--)
+                //normal order
+                for(int i=0; i<this.quickViewPanel.Controls.Count;i++)
                 {
                     Federation temp = this._federationList[fedIndex];
 
@@ -619,6 +638,8 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
                     fedIndex++;
                 }
             }
+            this.quickViewPanel.HorizontalScroll.Visible = true;
+            this.quickViewPanel.VerticalScroll.Visible = false;
             #endregion            
         }
 

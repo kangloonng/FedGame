@@ -57,6 +57,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
                     tempLabel.ForeColor = Color.Black;
                     tempLabel.Dock = DockStyle.Top;
                     tempLabel.Text = tupEntry.Item1.Replace("_"," ") + ":   " + tupEntry.Item2;
+                    tempLabel.Font = new Font("Microsoft Sans Serif", 10);
                     this.bodyPanel.Controls.Add(tempLabel);
                     tempLabel.SendToBack();
                     tempLabel.BringToFront();

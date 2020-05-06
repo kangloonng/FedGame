@@ -30,7 +30,10 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
                 dataQuality = Math.Round(dataQuality, 2);
                 dataQuantity = dataqlty_min + (dataqty_max - dataqty_min) * ran.NextDouble();
                 dataQuantity = Math.Round(dataQuantity, 2);
-                resourceQuantity = ran.Next(resourceqty_min+1, resourceqty_max-1);
+                if (resourceqty_max == resourceqty_min)
+                    resourceQuantity = 1;
+                else
+                    resourceQuantity = ran.Next(resourceqty_min+1, resourceqty_max-1);
 
                 Tuple<DataObject, Resource,double> tempTuple = new Tuple<DataObject,Resource,double>(new DataObject(dataQuality,dataQuantity), new Resource(resourceQuantity), startingAsset);
                 this.HandList.Add(tempTuple);

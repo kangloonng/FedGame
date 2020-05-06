@@ -13,7 +13,5 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Presenters
             _view = view;
             _view.SettingsList = Simulation.Instance.simulationSettings.settingsList;
         }
-
-
     }
 }

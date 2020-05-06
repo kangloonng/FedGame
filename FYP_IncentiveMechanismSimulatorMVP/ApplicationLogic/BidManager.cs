@@ -52,14 +52,21 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
             return this.BidList.Where(p => p.Pid == pid).ToList();
         }
 
-        internal void RemoveFederationBid(int federationId)
+        public void RemoveFederationBid(int federationId)
         {
             this.BidList = this.BidList.Where(b => b.Fid != federationId).ToList();
         }
 
-        internal int GetBidsCount(int federationId)
+        public int GetBidsCount(int federationId)
         {
             return this.BidList.Where(b => b.Fid == federationId).ToList().Count;
+        }
+
+        public void RemovePlayerBid(Bid playerBid)
+        {
+            int index = this.BidList.FindIndex(b => b.Pid == playerBid.Pid && b.Fid == playerBid.Fid);
+            if (index != -1)
+                this.BidList.RemoveAt(index);
         }
     }
 }

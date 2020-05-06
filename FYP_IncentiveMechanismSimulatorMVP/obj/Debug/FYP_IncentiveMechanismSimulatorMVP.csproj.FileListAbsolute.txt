@@ -66,68 +66,29 @@ D:\FYP Current\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechani
 D:\FYP Current\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.GameMenuForm.resources
 H:\FYP Current\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.csprojAssemblyReference.cache
 D:\FYP Current\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.DistributionOfResourcesUC.resources
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\FYP_IncentiveMechanismSimulatorMVP.exe.config
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\FYP_IncentiveMechanismSimulatorMVP.exe
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\FYP_IncentiveMechanismSimulatorMVP.pdb
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\EntityFramework.dll
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\Python.Runtime.dll
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\EntityFramework.xml
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.csprojAssemblyReference.cache
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.BidForm.resources
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.FederationListForm.resources
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.FederationRowInfoUC.resources
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.FederationRowUC.resources
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.GameMenuForm.resources
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.HelpViewerForm.resources
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.MainMenuForm.resources
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.PlayerRowUC.resources
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.SummaryPageForm.resources
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.ViewSettingsForm.resources
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Properties.Resources.resources
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.csproj.GenerateResource.cache
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.csproj.CopyComplete
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.exe
-H:\FYP Current\v1.1\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.pdb
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\FYP_IncentiveMechanismSimulatorMVP.exe.config
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\FYP_IncentiveMechanismSimulatorMVP.exe
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\FYP_IncentiveMechanismSimulatorMVP.pdb
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\EntityFramework.dll
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\Python.Runtime.dll
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\EntityFramework.xml
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.csprojAssemblyReference.cache
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.BidForm.resources
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.FederationListForm.resources
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.FederationRowInfoUC.resources
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.FederationRowUC.resources
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.GameMenuForm.resources
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.HelpViewerForm.resources
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.MainMenuForm.resources
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.PlayerRowUC.resources
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.SummaryPageForm.resources
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.ViewSettingsForm.resources
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Properties.Resources.resources
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.csproj.GenerateResource.cache
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.csproj.CopyComplete
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.exe
-C:\Users\K\Desktop\GitHub\FYP Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.pdb
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.csprojAssemblyReference.cache
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.BidForm.resources
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.FederationListForm.resources
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.FederationRowInfoUC.resources
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.FederationRowUC.resources
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.GameMenuForm.resources
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.HelpViewerForm.resources
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.MainMenuForm.resources
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.PlayerRowUC.resources
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.SummaryPageForm.resources
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.ViewSettingsForm.resources
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Properties.Resources.resources
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.csproj.GenerateResource.cache
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.exe
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.pdb
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\FYP_IncentiveMechanismSimulatorMVP.exe.config
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\FYP_IncentiveMechanismSimulatorMVP.exe
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\FYP_IncentiveMechanismSimulatorMVP.pdb
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\EntityFramework.dll
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\EntityFramework.xml
-C:\Users\K\Desktop\GitHub\FYP Project\NTU-Final-Year-Project\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.csproj.CopyComplete
+H:\FYP Current\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.ViewSettingsFormv2.resources
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\SimDatabase.mdf
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\SimDatabase_log.ldf
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\FYP_IncentiveMechanismSimulatorMVP.exe.config
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\FYP_IncentiveMechanismSimulatorMVP.exe
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\FYP_IncentiveMechanismSimulatorMVP.pdb
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\EntityFramework.dll
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\Python.Runtime.dll
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\EntityFramework.xml
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.csprojAssemblyReference.cache
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.BidForm.resources
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.FederationListForm.resources
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.FederationRowInfoUC.resources
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.FederationRowUC.resources
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.GameMenuForm.resources
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.HelpViewerForm.resources
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.MainMenuForm.resources
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.PlayerRowUC.resources
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.SummaryPageForm.resources
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.ViewSettingsForm.resources
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Forms.ViewSettingsFormv2.resources
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.Properties.Resources.resources
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.csproj.GenerateResource.cache
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.csproj.CopyComplete
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.exe
+C:\Users\K\Desktop\FYP_IncentiveMechanismSimulatorMVP\obj\Debug\FYP_IncentiveMechanismSimulatorMVP.pdb

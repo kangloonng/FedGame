@@ -14,14 +14,16 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
             this.FederationList = new List<Federation>();
         }
 
-        public void PopulateFederations(int numFederations, List<Scheme> schemeList, Admission admsn,double startingTime)
+        public void PopulateFederations(int numFederations, List<dynamic> schemeList, Admission admsn,double startingTime)
         {
-            for (int i = 0; i < numFederations; i++)
+            using (Python.Runtime.Py.GIL())
             {
-                Federation tempFed = new Federation(i + 1, new Admission(0.5, 5, 1,100), schemeList[i%schemeList.Count], startingTime);
-                tempFed.sc.totalTrainingQuality = 0;
-                this.FederationList.Add(tempFed);
-                tempFed.AdmissionPolicy = admsn;
+                for (int i = 0; i < numFederations; i++)
+                {
+                    Federation tempFed = new Federation(i + 1, new Admission(0.5, 5, 1, 100), (string)schemeList[i].Name, startingTime);
+                    this.FederationList.Add(tempFed);
+                    tempFed.AdmissionPolicy = admsn;
+                }
             }
         }
 
@@ -47,6 +49,18 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
             foreach(Federation f in this.FederationList)
             {
                 f.FederationMarketShareHistory.Add(f.MarketShare);
+            }
+        }
+
+        public void FederationDebug()
+        {
+            foreach(Federation f in this.FederationList)
+            {
+                Console.WriteLine(String.Format("Federation {0} Num Participants {1}", f.FederationId, f.ParticipantList.Count));
+                foreach(Player p in f.ParticipantList)
+                {
+                    Console.WriteLine(p.ToString());
+                }
             }
         }
     }

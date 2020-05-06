@@ -52,6 +52,9 @@
     <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Python.Runtime">
+      <HintPath>C:\Users\K\AppData\Local\Programs\Python\Python37-32\Lib\site-packages\Python.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -80,7 +83,6 @@
     <Compile Include="ApplicationLogic\SimulationSettings.cs" />
     <Compile Include="ApplicationLogic\StateEnum.cs" />
     <Compile Include="ApplicationLogic\StateManager.cs" />
-    <Compile Include="ApplicationLogic\StrategyManager.cs" />
     <Compile Include="ApplicationLogic\InTrainingManager.cs" />
     <Compile Include="Bids.cs">
       <DependentUpon>SimDatabaseEntities.tt</DependentUpon>
@@ -154,6 +156,12 @@
     <Compile Include="Forms\ViewSettingsForm.Designer.cs">
       <DependentUpon>ViewSettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ViewSettingsFormv2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ViewSettingsFormv2.Designer.cs">
+      <DependentUpon>ViewSettingsFormv2.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameInstance.cs">
       <DependentUpon>SimDatabaseEntities.tt</DependentUpon>
     </Compile>
@@ -168,10 +176,11 @@
     <Compile Include="Model\Federation.cs" />
     <Compile Include="Model\InTraining.cs" />
     <Compile Include="Model\Player.cs" />
+    <Compile Include="Model\EqualDistributionAgent.cs" />
+    <Compile Include="Model\PlayerFederationObject.cs" />
     <Compile Include="Model\Resource.cs" />
     <Compile Include="Model\Scheme.cs" />
     <Compile Include="Model\State.cs" />
-    <Compile Include="Model\Strategy.cs" />
     <Compile Include="ParticipantHistory.cs">
       <DependentUpon>SimDatabaseEntities.tt</DependentUpon>
     </Compile>
@@ -190,6 +199,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schemes\EqualDivisionScheme.cs" />
     <Compile Include="Schemes\ContributionBasedScheme.cs" />
+    <Compile Include="SimDatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SimDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SimDatabaseEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -211,7 +225,6 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>SimDatabaseEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Strategies\EqualDistribution.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>SimDatabaseEntities.tt</DependentUpon>
     </Compile>
@@ -220,6 +233,7 @@
     </Compile>
     <Compile Include="Utils\IOManager.cs" />
     <Compile Include="Utils\Logger.cs" />
+    <Compile Include="Utils\PythonInterface.cs" />
     <Compile Include="View\IBidForm.cs" />
     <Compile Include="View\IEventsForm.cs" />
     <Compile Include="View\IFederationListForm.cs" />
@@ -257,6 +271,9 @@
     <EmbeddedResource Include="Forms\ViewSettingsForm.resx">
       <DependentUpon>ViewSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ViewSettingsFormv2.resx">
+      <DependentUpon>ViewSettingsFormv2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -268,6 +285,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.Config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -283,6 +301,17 @@
       <LastGenOutput>SimDatabaseEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Resources\IJCAI_demo.sketch" />
+    <None Include="SimDatabaseDataSet.xsc">
+      <DependentUpon>SimDatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SimDatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SimDatabaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SimDatabaseDataSet.xss">
+      <DependentUpon>SimDatabaseDataSet.xsd</DependentUpon>
+    </None>
     <None Include="SimDatabaseEntities.edmx.diagram">
       <DependentUpon>SimDatabaseEntities.edmx</DependentUpon>
     </None>
@@ -303,6 +332,10 @@
     <Content Include="Resources\Image1.bmp" />
     <Content Include="Resources\Picture1.png" />
     <Content Include="Resources\References.txt" />
+    <Content Include="Resources\transparentbg Header v2.png" />
+    <Content Include="SimDatabase.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SimDatabaseEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SimDatabaseEntities.edmx</DependentUpon>
@@ -312,6 +345,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SimDatabaseEntities.edmx</DependentUpon>
       <LastGenOutput>SimDatabaseEntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="SimDatabase_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>SimDatabase.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

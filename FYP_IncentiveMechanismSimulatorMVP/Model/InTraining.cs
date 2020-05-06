@@ -26,7 +26,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
         private void CalculateLocalTrainingLength()
         {
             ApplicationLogic.SimulationSettings _ss = ApplicationLogic.Simulation.Instance.simulationSettings;
-            Console.WriteLine("Calculating Length -> Data Quantity {0} , Resource Quantity {1}", this.DataCommitted.DataQuantity, this.ResourceCommited.AssignedQty);
+            //Console.WriteLine("Calculating Length -> Data Quantity {0} , Resource Quantity {1}", this.DataCommitted.DataQuantity, this.ResourceCommited.AssignedQty);
             double constant = 10;
             double inverseProportion = constant * (DataCommitted.DataQuantity / this.ResourceCommited.AssignedQty); //(this.ResourceCommited.AssignedQty/10.0) / DataCommitted.DataQuantity;
             double min_range = _ss.MIN_TRAINING_LENGTH;// ApplicationLogic.Constants.MIN_LENGTH;
@@ -42,6 +42,12 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
         private double NormalizationEqn(double min, double max, double value, double min_length, double max_length)
         {
             return Math.Round(((value - min_length) / (max_length - min_length)) * (max - min) + min,1);
+        }
+
+        public override string ToString()
+        {
+            return String.Format("InTraining Object {0}Player {1} - Federation {2}{0}Data Quality/ Quantity {3}/{4}{0}Resource Commited{5}",
+                Environment.NewLine, Pid, Fid, DataCommitted.DataQuality, DataCommitted.DataQuantity, ResourceCommited.AssignedQty);
         }
     }
 }

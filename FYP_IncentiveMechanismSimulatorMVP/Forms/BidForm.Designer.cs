@@ -50,6 +50,7 @@
             this.dataQuantity_comboBox = new System.Windows.Forms.ComboBox();
             this.resourceQuantity_comboBox = new System.Windows.Forms.ComboBox();
             this.bottom_panel = new System.Windows.Forms.Panel();
+            this.leave_btn = new System.Windows.Forms.Button();
             this.close_btn = new System.Windows.Forms.Button();
             this.bid_btn = new System.Windows.Forms.Button();
             this.titlePanel = new System.Windows.Forms.Panel();
@@ -338,6 +339,7 @@
             // 
             // bottom_panel
             // 
+            this.bottom_panel.Controls.Add(this.leave_btn);
             this.bottom_panel.Controls.Add(this.close_btn);
             this.bottom_panel.Controls.Add(this.bid_btn);
             this.bottom_panel.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -346,10 +348,21 @@
             this.bottom_panel.Size = new System.Drawing.Size(514, 41);
             this.bottom_panel.TabIndex = 0;
             // 
+            // leave_btn
+            // 
+            this.leave_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leave_btn.Location = new System.Drawing.Point(220, 6);
+            this.leave_btn.Name = "leave_btn";
+            this.leave_btn.Size = new System.Drawing.Size(96, 29);
+            this.leave_btn.TabIndex = 2;
+            this.leave_btn.Text = "Remove";
+            this.leave_btn.UseVisualStyleBackColor = true;
+            this.leave_btn.Click += new System.EventHandler(this.button1_Click);
+            // 
             // close_btn
             // 
             this.close_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.close_btn.Location = new System.Drawing.Point(280, 6);
+            this.close_btn.Location = new System.Drawing.Point(322, 6);
             this.close_btn.Name = "close_btn";
             this.close_btn.Size = new System.Drawing.Size(75, 29);
             this.close_btn.TabIndex = 1;
@@ -360,7 +373,7 @@
             // bid_btn
             // 
             this.bid_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bid_btn.Location = new System.Drawing.Point(160, 6);
+            this.bid_btn.Location = new System.Drawing.Point(139, 6);
             this.bid_btn.Name = "bid_btn";
             this.bid_btn.Size = new System.Drawing.Size(75, 29);
             this.bid_btn.TabIndex = 0;
@@ -401,7 +414,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "BidForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "BidForm";
+            this.Text = "Bidding ";
             this.panel1.ResumeLayout(false);
             this.body_panel.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -441,5 +454,6 @@
         private System.Windows.Forms.ComboBox dataQuality_comboBox;
         private System.Windows.Forms.ComboBox federationId_comboBox;
         private System.Windows.Forms.TextBox bidAmount_txtbox;
+        private System.Windows.Forms.Button leave_btn;
     }
 }
