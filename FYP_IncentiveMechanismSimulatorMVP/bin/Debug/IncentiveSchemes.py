@@ -45,8 +45,11 @@ class env:
     def DataQ_sum(self, current_bids):
         return np.sum(np.array(current_bids)[:,3])
 
+#Credits: Base incentive schemes coded are referenced and imeplemented with reference to the following paper:
+#H. Yu et al., "A Fairness-aware Incentive Scheme for Federated Learning," presented at the Proceedings of the AAAI/ACM Conference on AI, Ethics, and Society, New York, NY, USA, 2020.
+#[Online]. Available: https://doi.org/10.1145/3375627.3375840.
 #---------------------------Base Incentive Schemes-----------------------------#
-#Credits:
+
     
 class federal(object):
     #def __init__(self,id,Env):
