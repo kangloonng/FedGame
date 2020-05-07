@@ -21,7 +21,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
             {
                 string settingsFilepathName = "FilePathSettings.txt";
                 string text = File.ReadAllText(default_directory + "\\" + settingsFilepathName);
-                string[] textList = text.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+                string[] textList = text.Split(new[] { "\r\n" }, StringSplitOptions.None);
                 foreach(string s in textList)
                 {
                     Console.WriteLine(s);
@@ -88,7 +88,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
                           Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.Machine);
             Environment.SetEnvironmentVariable("PATH", path, EnvironmentVariableTarget.Process);
             Environment.SetEnvironmentVariable("PYTHONHOME", pathToPython, EnvironmentVariableTarget.Process);
-            Console.WriteLine(path);
+            Console.WriteLine("path :"+path);
             Console.WriteLine(EnvironmentVariableTarget.Process);
             var lib = new[]
             {
