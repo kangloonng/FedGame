@@ -10,3 +10,4 @@ FedGame requires the following to run successfully
  - Please be sure to edit **FilePathSettings.txt** and point to the installation folder of Python 3.7 32-bit. 
 	 - i.e. \AppData\Local\Programs\Python\Python37-32
  - To ensure best use, recommended resolution is 1920 x 1080
+ - Navigate to \bin\Debug\ and run the .exe file to start the application. 
