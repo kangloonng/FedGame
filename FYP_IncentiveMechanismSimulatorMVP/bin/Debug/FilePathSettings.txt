@@ -1,2 +1,3 @@
 incentive_py_file_path=default
-database_server=""
+python_path_folder=C:\Users\K\AppData\Local\Programs\Python\Python37-32
+database_server=nil

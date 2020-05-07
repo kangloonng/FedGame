@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Forms",
-    "\\Properties"
+    "\\Properties",
+    "\\Strategies"
   ],
-  "SelectedNode": "\\Forms\\MainMenuForm.resx",
+  "SelectedNode": "\\FYP_IncentiveMechanismSimulatorMVP.sln",
   "PreviewInSolutionExplorer": false
 }

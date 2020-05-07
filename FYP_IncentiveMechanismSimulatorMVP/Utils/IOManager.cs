@@ -11,14 +11,16 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
     public class IOManager
     {
         private string incentive_py_file_path = "";
+        private string python_path_folder = "";
         public string database_server { get; set; }
+        private static string default_directory = Environment.CurrentDirectory;
         public IOManager() 
         {
             //TODO INIT OF FILE PATHS
             try
             {
                 string settingsFilepathName = "FilePathSettings.txt";
-                string text = File.ReadAllText(Environment.CurrentDirectory + "\\" + settingsFilepathName);
+                string text = File.ReadAllText(default_directory + "\\" + settingsFilepathName);
                 string[] textList = text.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
                 foreach(string s in textList)
                 {
@@ -45,28 +47,28 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
             {
                 case "incentive_py_file_path":                    
                     if (path.Equals("default"))
-                        this.incentive_py_file_path = Environment.CurrentDirectory;
+                        this.incentive_py_file_path = default_directory;
                     else
                         this.incentive_py_file_path = path;
 
+                    break;
+                case "python_path_folder":
+                    this.python_path_folder = path;
                     break;
                 default:
                     Console.WriteLine("Error in FilePathSettings.txt");
                     break;
             }
         }
-        #region Python IO tbi
-        public List<string> GetStringSchemeTypes()
+        #region Python IO 
+        public string GetFixedSettings()
         {
-            List<string> schemeTypeList = new List<string>();
+            //TODO move path to FilePathStrings file
+            string filepath = default_directory + "\\FixedParams.txt";
+            string text = File.ReadAllText(filepath);
 
-            string source = @"~\Schemes";
-            string[] files = Directory.GetFiles(source, "*.cs");
-            Console.WriteLine(files[0]);
-
-            return schemeTypeList;
+            return text;
         }
-
         public PythonInterface LoadPythonModules()
         {
             var obj = this.importDynamicModules();
@@ -80,24 +82,14 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
         {
             // Setup working directory for python files
             string pathFolder = this.incentive_py_file_path;
-            string pathToPython = @"H:\FYP Current\DemoXMLPython\bin\Debug";
+            //Console.WriteLine(default_directory);
+            string pathToPython = python_path_folder;
             string path = pathToPython + ";" +
                           Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.Machine);
             Environment.SetEnvironmentVariable("PATH", path, EnvironmentVariableTarget.Process);
             Environment.SetEnvironmentVariable("PYTHONHOME", pathToPython, EnvironmentVariableTarget.Process);
-            //string[] fileNamearray = null;
-            //s
-            //try
-            //{
-            //    fileNamearray = Directory.GetFiles(pathFolder, "*Schemes.py");
-            //}catch(DirectoryNotFoundException e)
-            //{
-            //    Console.WriteLine(e.ToString());
-            //    ApplicationLogic.Simulation.Instance.EXIT_FLAG = -1;
-            //    return null;
-            //}
-            //string[] fileNamearray = Directory.GetFiles(pathFolder, "Test.py");
-
+            Console.WriteLine(path);
+            Console.WriteLine(EnvironmentVariableTarget.Process);
             var lib = new[]
             {
                 pathFolder,
@@ -110,14 +102,6 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
             Environment.SetEnvironmentVariable("PYTHONPATH", paths, EnvironmentVariableTarget.Process);
             using (Py.GIL())
             {
-                //string moduleName = Path.GetFileName(this.incentive_py_file_path + "IncentiveSchemes.py");
-                //foreach (string s in fileNamearray)
-                //{
-                //    string moduleName = Path.GetFileName(s).Replace(".py", "");
-                //    //moduleName = moduleName.Replace("_", "");
-                //    loadedModule = Py.Import(moduleName);
-                //    Console.WriteLine("Loaded "+moduleName);
-                //}
                 try
                 {
                     loadedModule = Py.Import("IncentiveSchemes");
@@ -134,7 +118,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
         #endregion 
         public void ReInitSettings()
         {         
-            string workingDirectory = Environment.CurrentDirectory;
+            string workingDirectory = default_directory;
             XElement xdoc = new XElement("Settings",
                                 new XElement("Environment_Settings",
                                     new XElement("FIXED_MARKET_SHARE",2000),
@@ -143,8 +127,8 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
                                     new XElement("MAX_TRAINING_LENGTH_BOUNDARY",1.5),
                                     new XElement("MIN_BID_LENGTH",0.5),
                                     new XElement("MIN_PROFIT_LENGTH",0.3),
-                                    new XElement("NUM_OF_FEDERATIONS",3),
-                                    new XElement("NUM_OF_CPU_PLAYERS",0),
+                                    new XElement("NUM_OF_FEDERATIONS",5),
+                                    new XElement("NUM_OF_CPU_PLAYERS",10),
                                     new XElement("MAX_TURNS", 10),
                                     new XElement("MIN_DATA_QUALITY",0.1),
                                     new XElement("MAX_DATA_QUALITY",0.99),
@@ -154,12 +138,12 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
                                     new XElement("DATA_QUANTITY_WEIGHT",0.3),
                                     new XElement("MIN_RESOURCE_QUANTITY",1),
                                     new XElement("MAX_RESOURCE_QUANTITY",10),
-                                    new XElement("FIXED_MARKET_SHARE_PCT",0.1)),
+                                    new XElement("FIXED_MARKET_SHARE_PCT",0.3)),
                                 new XElement("Threshold_Settings",
                                     new XElement("INIT_DATA_QUANTITY",0.1),
                                     new XElement("INIT_DATA_QUALITY",0.1),
                                     new XElement("INIT_RESOURCE_QUANTITY",1),
-                                    new XElement("INIT_AMOUNT_BID",10))
+                                    new XElement("INIT_AMOUNT_BID",50))
                                 );
 
             xdoc.Save(workingDirectory + "\\Settings.xml");
@@ -167,26 +151,28 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
         }
         public XElement GetSettings()
         {
-            string workingDirectory = Environment.CurrentDirectory+"\\Settings.xml";
-            return XElement.Load(workingDirectory);
+            string workingDirectory = default_directory+"\\Settings.xml";
+            try
+            {
+                return XElement.Load(workingDirectory);
+            }
+            catch(Exception e) 
+            {
+                Console.WriteLine("Could not find settings file! Re-initializing or re-dl from repository!");
+                this.ReInitSettings();
+                return XElement.Load(workingDirectory);
+            }
         }
 
         public void CreateTextFile(string content)
         {
             string fileName = "SqlCommands.txt";
-            string path = Environment.CurrentDirectory + "\\" + fileName;
+            string path = default_directory + "\\" + fileName;
 
             File.AppendAllLines(path, new[] { content });
 
         }
 
-        public  string GetFixedSettings()
-        {
-            //TODO move path to FilePathStrings file
-            string filepath = @"H:\FYP Current\FYP_IncentiveMechanismSimulatorMVP\bin\Debug\FixedParams.txt";
-            string text = File.ReadAllText(filepath);
 
-            return text;
-        }
     }
 }

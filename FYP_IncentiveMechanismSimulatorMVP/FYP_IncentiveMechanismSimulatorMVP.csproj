@@ -179,7 +179,6 @@
     <Compile Include="Model\EqualDistributionAgent.cs" />
     <Compile Include="Model\PlayerFederationObject.cs" />
     <Compile Include="Model\Resource.cs" />
-    <Compile Include="Model\Scheme.cs" />
     <Compile Include="Model\State.cs" />
     <Compile Include="ParticipantHistory.cs">
       <DependentUpon>SimDatabaseEntities.tt</DependentUpon>
@@ -197,8 +196,6 @@
     <Compile Include="Presenters\ViewSettingsFormPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Schemes\EqualDivisionScheme.cs" />
-    <Compile Include="Schemes\ContributionBasedScheme.cs" />
     <Compile Include="SimDatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -300,7 +297,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SimDatabaseEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Resources\IJCAI_demo.sketch" />
     <None Include="SimDatabaseDataSet.xsc">
       <DependentUpon>SimDatabaseDataSet.xsd</DependentUpon>
     </None>

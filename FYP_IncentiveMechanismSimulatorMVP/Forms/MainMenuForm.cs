@@ -74,11 +74,11 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            /*
-            ApplicationLogic.DBManager test = new ApplicationLogic.DBManager();
+            
+            //ApplicationLogic.DBManager test = new ApplicationLogic.DBManager();
             Utils.IOManager temp = new Utils.IOManager();
             temp.ReInitSettings();
-            */
+            
         }
     }
 }

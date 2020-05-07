@@ -11,16 +11,17 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
 {
     public class SchemeManager
     {
-        public List<Scheme> SchemeList { get; set; }
+        //public List<Scheme> SchemeList { get; set; }
         public List<dynamic> PythonSchemeList { get; set; }
         public PythonInterface PythonInterfaceReference { get; set; }
  
         public SchemeManager()
         {
-            this.SchemeList = new List<Scheme>();
+            //this.SchemeList = new List<Scheme>();
             this.PythonSchemeList = new List<dynamic>();
             //this.LoadSchemes();
         }
+        /*
         #region C-sharp implementation
         public void LoadSchemes()
         {
@@ -52,15 +53,8 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
             }
         }
         #endregion
-        
-        public void TestMethod()
-        {
-            //TODO
-            for(int i =0; i < PythonInterfaceReference.IncentiveSchemenameList.Count; i++)
-            {
-                Console.WriteLine((i + 1) + ". " + PythonInterfaceReference.IncentiveSchemenameList[i]);
-            }
-        }
+        */
+
         //TODO
         public void BuildFederationSchemeList(int numFed, int num_players)
         {

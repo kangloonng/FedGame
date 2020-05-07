@@ -41,7 +41,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
             FIXED_MARKET_SHARE = ConvertToDouble((GetValue("Environment_Settings", "FIXED_MARKET_SHARE")));
             FIXED_STARTING_ASSET = ConvertToDouble((GetValue("Environment_Settings", "FIXED_STARTING_ASSET")));
             MIN_TRAINING_LENGTH = ConvertToDouble((GetValue("Environment_Settings", "MIN_TRAINING_LENGTH")));
-            MAX_TRAINING_LENGTH = ConvertToDouble((GetValue("Environment_Settings", "MAX_TRAINING_LENGTH")));
+            MAX_TRAINING_LENGTH = ConvertToDouble((GetValue("Environment_Settings", "MAX_TRAINING_LENGTH_BOUNDARY")));
             MIN_BID_LENGTH = ConvertToDouble((GetValue("Environment_Settings", "MIN_BID_LENGTH")));
             MIN_PROFIT_LENGTH = ConvertToDouble((GetValue("Environment_Settings", "MIN_PROFIT_LENGTH")));
             NUM_OF_FEDERATIONS = ConvertToInt((GetValue("Environment_Settings", "NUM_OF_FEDERATIONS")));

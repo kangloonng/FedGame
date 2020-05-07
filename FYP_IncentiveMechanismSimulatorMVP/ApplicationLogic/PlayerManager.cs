@@ -23,6 +23,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
                 else
                     tempPlayer = new EqualDistributionAgent(i + 1);
 
+                //tempPlayer.LocalStrategy = temp; // strategyList[0];
                 tempPlayer.InitList(federationList);
                 this.PlayerList.Add(tempPlayer);                
             }
