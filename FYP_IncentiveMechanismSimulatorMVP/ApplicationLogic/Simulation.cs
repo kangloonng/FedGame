@@ -148,9 +148,9 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
         {
             string fixedTextParams = this._ioManager.GetFixedSettings();
             string[] textCategory = fixedTextParams.Split('#'); //, StringSplitOptions.RemoveEmptyEntries); //.Split('#',StringSplitOptions.RemoveEmptyEntries);
-            string[] fixedParamsNum = textCategory[1].Split(new[] { "\r\n" }, StringSplitOptions.None);
-            string[] playersParam = textCategory[2].Split(new[] { "\r\n" }, StringSplitOptions.None);
-            string[] federationParam = textCategory[3].Split(new[] { "\r\n" }, StringSplitOptions.None);
+            string[] fixedParamsNum = textCategory[1].Split(new[] { "\r\n" , "\n" }, StringSplitOptions.None);
+            string[] playersParam = textCategory[2].Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+            string[] federationParam = textCategory[3].Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
 
             //Console.WriteLine(fixedParamsNum[1]);
             int numPlayers = Convert.ToInt32(fixedParamsNum[1].Split(',')[0]);

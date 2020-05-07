@@ -21,7 +21,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
             {
                 string settingsFilepathName = "FilePathSettings.txt";
                 string text = File.ReadAllText(default_directory + "\\" + settingsFilepathName);
-                string[] textList = text.Split(new[] { "\r\n" }, StringSplitOptions.None);
+                string[] textList = text.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
                 foreach(string s in textList)
                 {
                     Console.WriteLine(s);
