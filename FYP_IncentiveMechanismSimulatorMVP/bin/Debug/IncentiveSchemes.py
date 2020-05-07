@@ -6,8 +6,8 @@ class util:
     def __init__(self):
         self.listBuild = []        
 
-    def inputList(self, test1,test2,test3,test4,test5,test6):
-        self.listBuild.append([test1,test2,test3,test4,test5,test6])
+    def inputList(self, param1 ,param2,param3,param4,param5,param6):
+        self.listBuild.append([param1 ,param2,param3,param4,param5,param6])
 
     def reInit(self):
         self.listBuild=[]
