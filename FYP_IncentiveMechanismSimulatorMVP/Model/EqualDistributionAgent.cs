@@ -7,7 +7,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
 {
     public class EqualDistributionAgent : Player
     {
-        private double _initial_bid_amnt = 150;
+        private double _initial_bid_amnt = 100;
         private double _dataQuantiy_commit_multiplier = 1;
         private double _dataQuality_commit_multiplier = 1;
         public EqualDistributionAgent(int pid) : base(pid)
