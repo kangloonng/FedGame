@@ -20,31 +20,6 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
         public List<PlayerFederationObject> FedParticipationTimesList { get; set; }
         public Dictionary<int, List<double>> FederationProfitHistory { get; set; }
         public Dictionary<int, List<InTraining>> FederationCommitmentHistory { get; set; }
-        /*
-        public bool UpdateList(int federationId, double profitEarned, double admissionAmt)
-        {
-            /*
-             * Standard Decision
-             
-
-            var tempObj = this.FedParticipationTimesList.Where(f => f.Fid == federationId).FirstOrDefault();
-            tempObj.BidAmtSoFar += admissionAmt;
-            tempObj.ProfitSoFar += profitEarned;
-            tempObj.NumTimesParticipate++;
-            tempObj.ToParticipate = this.LocalStrategy.Decision(tempObj.ProfitSoFar, tempObj.BidAmtSoFar);
-            return tempObj.ToParticipate;
-        }
-        public string FPTLToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("Strategy " + this.LocalStrategy.StrategyName + Environment.NewLine);
-            foreach (var obj in this.FedParticipationTimesList)
-            {
-                String s = String.Format("Federation {0} -> Bid Amount :{1}, Profit Earned :{2}, Decision :{3}", obj.Fid, obj.BidAmtSoFar, obj.ProfitSoFar, obj.ToParticipate);
-                sb.Append(s + Environment.NewLine);
-            }
-            return sb.ToString();
-        }*/
 
         public Player(int pid)
         {

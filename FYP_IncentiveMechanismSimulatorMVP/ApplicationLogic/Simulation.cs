@@ -52,6 +52,8 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
         {
             Console.WriteLine("Debug message for Federation");
             this._federationManager.FederationDebug();
+            Console.WriteLine("Debug message for Player");
+            this._playerManager.PlayerDebug();
         }
         #region Simulation init Settings
         //Load IO settings
@@ -292,6 +294,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
 
             //Process CPU Player Actions
             //Goal : Create Bid Objects for Federations that are open in bid.
+            if(federationsInBid.Count!=0)
             this.ProcessCPUActions(federationsInBid);
 
             //Round Progression
@@ -333,7 +336,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
 
         private void ProcessCPUActions(List<Federation> federationsInBid)
         {
-            List<Bid> cpuPlayersBid = this._playerManager.ProcessCPUActions(federationsInBid);
+            List<Bid> cpuPlayersBid = this._playerManager.ProcessCPUActions(federationsInBid, this._trainingManager.InTrainingList);
             this._bidManager.BidList.AddRange(cpuPlayersBid);
         }
 
@@ -360,23 +363,36 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
                         if (success)
                         {
                             //this._log.PrintConsoleMessage("PROGRESS STATE ", "Federation " + f.FederationId);
+                            List<InTraining> participantsDetails = this._trainingManager.InTrainingList.Where(t => t.Fid == f.FederationId).ToList();
+                            foreach(InTraining t in participantsDetails)
+                            {
+                                int pid = t.Pid;
+                                double toPayFederation = t.AdmissionAmt;
+                                if ((this._playerManager.PlayerList[pid - 1].Asset - toPayFederation) < 0) // participant cannot pay admission amount
+                                {
+                                    //forcibly kick him out
+                                    _trainingManager.RemoveTrainingRecord(pid, f.FederationId);
+                                    _playerManager.ReturnResources(pid, t.ResourceCommited.AssignedQty);
+                                    _federationManager.RemoveParticipant(f.FederationId, pid);
+                                    this.eventsManager.CreateEventString(String.Format("Player {0} cannot afford participation fee and is removed from current round (Federation {1})",pid,f.FederationId)); //Paid ${0} to Federation {1} for participation in this round ", t.AdmissionAmt, f.FederationId));
+
+                                }
+                                else
+                                {
+                                    this._playerManager.PlayerList[pid - 1].Asset -= t.AdmissionAmt;
+                                    f.FederationAsset += t.AdmissionAmt;
+                                    if (pid == HumanPlayer.Pid)
+                                    {
+                                        this.eventsManager.CreateEventString(String.Format("Paid ${0} to Federation {1} for participation in this round ", t.AdmissionAmt, f.FederationId));
+                                    }
+                                }
+                            }
+
                             newLength = this._trainingManager.RetrieveFederationMaxTraining(f.FederationId);
                             if (newLength > 0)
                             {
                                 f.TimeLeftInState = newLength;
                                 //this._log.PrintConsoleMessage("PROGRESS STATE ", "Max Time Needed -> " + newLength);
-                            }
-
-                            List<InTraining> participantsDetails = this._trainingManager.InTrainingList.Where(t => t.Fid == f.FederationId).ToList();
-                            foreach(InTraining t in participantsDetails)
-                            {
-                                int pid = t.Pid;
-                                this._playerManager.PlayerList[pid - 1].Asset -= t.AdmissionAmt;
-                                f.FederationAsset += t.AdmissionAmt;
-                                if (pid == HumanPlayer.Pid)
-                                {
-                                    this.eventsManager.CreateEventString(String.Format("Paid ${0} to Federation {1} for participation in this round ", t.AdmissionAmt, f.FederationId));
-                                }
                             }
                         }
                         else

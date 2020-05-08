@@ -40,19 +40,39 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
             //temp.ProfitHistory.Add(new Tuple<double,double>(0,startingAsset));
         }
 
-        public List<Bid> ProcessCPUActions(List<Federation> federationList)
+        public List<Bid> ProcessCPUActions(List<Federation> federationList, List<InTraining> inTrainingList)
         {
+            if (federationList.Count == 0)
+                return null;
             List<Bid> tempBidList = new List<Bid>();
             for(int i = 1; i < this.PlayerList.Count; i++)
             {
                 EqualDistributionAgent tempPlayer = (EqualDistributionAgent) this.PlayerList[i];
+                //if no more resource continue
+                if (tempPlayer.ResourceOwned.AssignedQty - tempPlayer.ResourceOwned.InBidQty - tempPlayer.ResourceOwned.InTrainingQty == 0)
+                    continue;
+                //List<InTraining> playersParticipation = inTrainingList.Where(t => t.Pid == tempPlayer.Pid).ToList();
+                List<int> federationsIDList = (from t in inTrainingList select t.Fid).ToList();
+                
+                //List<Federation> federationListWithoutCurrentParticipation  = federationList.Where(f => playersParticipation
+                //.All(t => t.Fid != f.FederationId)).ToList();
+                List<Federation> federationListWithoutCurrentParticipation = (from f in federationList
+                                                                              where !federationsIDList.Contains(f.FederationId)
+                                                                              select f).ToList();
+                foreach (Federation f in federationListWithoutCurrentParticipation)
+                {
+                    Console.WriteLine("Player "+tempPlayer.Pid+" Federation ID " + f.FederationId);
+                }
                 //List<Bid> CPUPlayerDecision = tempPlayer.CPU_Decision2(federationList);
 
                 //tempBidList.AddRange(CPUPlayerDecision);
-                List<Federation> shuffleList = RandomizeList(federationList);
+                List < Federation > shuffleList = RandomizeList(federationListWithoutCurrentParticipation);
                 List<Tuple<int,int,double,double,int,double>> tempList = tempPlayer.GenerateBidList(shuffleList);
-                if(tempList!=null)
-                    tempBidList.AddRange(this.GenerateBidList(tempList));
+                if (tempList != null)
+                {
+                    List<Bid> tempTupleBidList = this.GenerateBidList(tempList);
+                    tempBidList.AddRange(tempTupleBidList);
+                }
             }
             return tempBidList;
         }
@@ -76,23 +96,6 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
                 //p.ProfitHistory.Add(new Tuple<double,double>(turn+progression,p.Asset));
             }
         }
-
-        /*
-        public bool UpdateEnvironment(int federationId, int playerIndex, double profitEarned, double admissionAmt)
-        {
-            Player tempObj = this.PlayerList[playerIndex];//this.PlayerList.Where(p => p.Pid == playerId).FirstOrDefault();
-            bool decisionStay = true;
-            
-            if (tempObj != null)
-            {
-                decisionStay=tempObj.UpdateList(federationId, profitEarned, admissionAmt);
-                //tempObj.LocalStrategy.ToString();
-                //var listObj = tempObj.LocalStrategy.FedParticipationTimesList.Where(f => f.Fid == federationId).FirstOrDefault();
-                
-                
-            }
-            return decisionStay;
-        }*/
 
         public void ReturnResources(int pid, int assignedQty)
         {
@@ -135,6 +138,14 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
             }
 
             return -1; //human
+        }
+
+        public void PlayerDebug()
+        {
+            foreach (Player p in this.PlayerList)
+            {
+                Console.WriteLine(p.ToString());                
+            }
         }
     }
 }

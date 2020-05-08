@@ -7,7 +7,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
 {
     public class EqualDistributionAgent : Player
     {
-        private double _initial_bid_amnt = 50;
+        private double _initial_bid_amnt = 150;
         private double _dataQuantiy_commit_multiplier = 1;
         private double _dataQuality_commit_multiplier = 1;
         public EqualDistributionAgent(int pid) : base(pid)
@@ -43,6 +43,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
 
             if(eligibleFederations.Count == 0)
             {
+                eligibleFederations.Clear();
                 //lax criteria
                 foreach (Federation f in federationOpenForBids)
                 {
@@ -98,7 +99,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
                     if (leftOverQty <= 0 || (this.Asset-this.AssetInBid)<=0)
                         break;
 
-                    assetTobid = (this.Asset - this.AssetInBid) >= 0 ? this._initial_bid_amnt : this.Asset; // (this.Asset - this.AssetInBid);
+                    assetTobid = (this.Asset - this.AssetInBid) >= this._initial_bid_amnt ? this._initial_bid_amnt : (this.Asset-this.AssetInBid); // (this.Asset - this.AssetInBid);
                 }
             }
             return tempBidList;
@@ -109,11 +110,11 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
          */
         public override int SelectActionLeaveStay(int fid, double profitLastRound)
         {
-            int tolerance_rnd = 2;
+            int tolerance_rnd = 1;
             int countProfitDis = this.FederationProfitHistory[fid].Count;
 
             if ((tolerance_rnd - countProfitDis) <= 0)
-                if (profitLastRound <= _initial_bid_amnt) //TODO different threshold
+                if (profitLastRound < _initial_bid_amnt) //TODO different threshold
                     return 0;
 
             return 1; //TODO change back to 1
