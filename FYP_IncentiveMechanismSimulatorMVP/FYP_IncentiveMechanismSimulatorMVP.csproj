@@ -186,7 +186,6 @@
     <Compile Include="Participants.cs">
       <DependentUpon>SimDatabaseEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Presenters\ApplicationController.cs" />
     <Compile Include="Presenters\BidFormPresenter.cs" />
     <Compile Include="Presenters\EventsFormPresenter.cs" />
     <Compile Include="Presenters\FederationListPresenter.cs" />

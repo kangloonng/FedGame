@@ -9,17 +9,18 @@ using FYP_IncentiveMechanismSimulatorMVP.Utils;
 
 namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
 {
+    /*
+     * Manages the list of dynamic object created from IncentiveSchemes.py
+     * 1-to-1 Federation and Scheme 
+     */
     public class SchemeManager
     {
-        //public List<Scheme> SchemeList { get; set; }
         public List<dynamic> PythonSchemeList { get; set; }
         public PythonInterface PythonInterfaceReference { get; set; }
  
         public SchemeManager()
         {
-            //this.SchemeList = new List<Scheme>();
             this.PythonSchemeList = new List<dynamic>();
-            //this.LoadSchemes();
         }
         /*
         #region C-sharp implementation
@@ -54,26 +55,30 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
         }
         #endregion
         */
-
-        //TODO
+        /*
+         * Refer to PythonInterface creation of python object
+         * Main idea: Reference to a python class of specific incentive scheme
+         *            Upon trigger or access to this reference, then create the python class object (new object from reference) and link to Federation via index-linking
+         */
         public void BuildFederationSchemeList(int numFed, int num_players)
         {
             //reinit
             this.PythonSchemeList.Clear();
 
-            //TODO random
+            //TODO random assignment: current assignment linear
             int random = 0;
             for(int i=0; i<numFed; i++)
             {
                 if(random==0)
                     this.PythonSchemeList.Add(this.PythonInterfaceReference.CreatePyScheme(i%this.PythonInterfaceReference.IncentiveSchemenameList.Count, num_players));
             }
-
+            //for console display purposes
             for(int i=0; i < numFed; i++)
             {
                 Console.WriteLine("Index " + (i+1) + " assigned " + this.PythonSchemeList[i].Name);
             }
         }
+
         //for fixed params
         public void BuildFederationSchemeList(int numFed, int num_players, List<int> fedSchemeSplit)
         {
@@ -93,9 +98,12 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
                 Console.WriteLine("Index " + (i + 1) + " assigned " + this.PythonSchemeList[i].Name);
             }
         }
+        /*
+         * Returns a list of payoff based on participants' contribution. 
+         */
         public List<double> CalculatePayoff(double budgetToAllocate, int federationId, List<Player> participantList, double data_qual_weight, double data_quant_weight)
         {
-            List<Tuple<int, double>> tempList = new List<Tuple<int, double>>();
+            //List<Tuple<int, double>> tempList = new List<Tuple<int, double>>();
             //build list to pass to PythonInterfaceObject
             List<Player> playerList = new List<Player>();
             for(int i=0; i<Simulation.Instance.simulationSettings.NUM_OF_PLAYERS; i++)

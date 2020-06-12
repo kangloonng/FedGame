@@ -17,9 +17,9 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
         public String AgentName { get; set; }
         public List<Tuple<double,double,double>> ProfitHistory { get; set; }
         //public List<PlayerFederationObject> FedParticipationTimesList { get; set; }
-        public List<PlayerFederationObject> FedParticipationTimesList { get; set; }
+        //public List<PlayerFederationObject> FedParticipationTimesList { get; set; }
         public Dictionary<int, List<double>> FederationProfitHistory { get; set; }
-        public Dictionary<int, List<InTraining>> FederationCommitmentHistory { get; set; }
+        //public Dictionary<int, List<InTraining>> FederationCommitmentHistory { get; set; }
 
         public Player(int pid)
         {
@@ -31,12 +31,12 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
             this.ProfitHistory = new List<Tuple<double,double,double>>();
             this.ResourceOwned = new Resource();
             this.DataOwned = new DataObject();
-            this.FederationCommitmentHistory = new Dictionary<int, List<InTraining>>();
+            //this.FederationCommitmentHistory = new Dictionary<int, List<InTraining>>();
             this.FederationProfitHistory = new Dictionary<int, List<double>>();
             //this.FedParticipationTimesList = new List<PlayerFederationObject>();
         }
 
-        public void InitList(List<Federation> federationList)
+/*        public void InitList(List<Federation> federationList)
         {
             this.FedParticipationTimesList = new List<PlayerFederationObject>();
             foreach (Federation f in federationList)
@@ -46,7 +46,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
             }
 
             //this.LocalStrategy.InitList(federationList);
-        }
+        }*/
 
         public void AddProfitHistory(int turn, double prog)
         {
@@ -64,6 +64,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
                Pid, DataOwned.DataQuality, DataOwned.DataQuantity, ResourceOwned.AssignedQty, Asset);
         }
 
+        //for future creation of child or other design patterns of agents; mainly for method convention
         #region Agent Decision
         public virtual List<Tuple<int, int, double, double, int, double>> GenerateBidList(List<Federation> federationOpenForBids)
         {

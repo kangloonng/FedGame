@@ -77,7 +77,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
             //Init Managers etc
             this._numUsers = this.simulationSettings.NUM_OF_PLAYERS; 
             this._numFederations = this.simulationSettings.NUM_OF_FEDERATIONS;
-            this.SAVEDB_FLAG = 2;
+            this.SAVEDB_FLAG = 1; //edit this to save to DB 1 - DB; 2 - text file
             this._playerManager = new PlayerManager();
             this._federationManager = new FederationManager();
             this._schemeManager = new SchemeManager();

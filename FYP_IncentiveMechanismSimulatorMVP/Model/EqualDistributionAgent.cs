@@ -5,11 +5,18 @@ using System.Text;
 
 namespace FYP_IncentiveMechanismSimulatorMVP.Model
 {
+    /*
+     * Creates a self-interested agent that follows an equal distribution mentality. 
+     * Agent will attempt to spread its resources as evenly as possible to each Federation
+     * Leave Federation when profit is lower than admission cost.
+     * Explore all possible Federations until all have been explored, then choose highest payoff from history and stick to it.
+     */
     public class EqualDistributionAgent : Player
     {
-        private double _initial_bid_amnt = 100;
-        private double _dataQuantiy_commit_multiplier = 1;
-        private double _dataQuality_commit_multiplier = 1;
+        //edit this to modify commitment
+        private double _initial_bid_amnt = 100; //initial bid amount
+        private double _dataQuantiy_commit_multiplier = 1; //commit all data quantity
+        private double _dataQuality_commit_multiplier = 1; //commit all data quality
         public EqualDistributionAgent(int pid) : base(pid)
         {
             this.AgentName = "Equal Distribution";
@@ -41,6 +48,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
                 eligibleFederations.Add(f.FederationId);
             }
 
+            //if valid then open joined federations for consideration
             if(eligibleFederations.Count == 0)
             {
                 eligibleFederations.Clear();

@@ -5,6 +5,9 @@ using System.Text;
 using System.Xml.Linq;
 namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
 {
+    /*
+     * Manages the Simulation Settings loaded from file. 
+     */
     public class SimulationSettings
     {
         public double FIXED_MARKET_SHARE { get; }

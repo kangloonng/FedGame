@@ -5,6 +5,9 @@ using System.Text;
 using FYP_IncentiveMechanismSimulatorMVP.Model;
 namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
 {
+    /*
+     * Manages Federations created during game initialization
+     */
     public class FederationManager
     {
         public List<Federation> FederationList { get; set; }
@@ -13,7 +16,10 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
         {
             this.FederationList = new List<Federation>();
         }
-
+        /*
+         * Creates Federation object based on input. 
+         * schemeList is a list of run-time created object of Python class; 1 to 1 assignment of Federation and Incentive Scheme
+         */
         public void PopulateFederations(int numFederations, List<dynamic> schemeList, Admission admsn,double startingTime)
         {
             using (Python.Runtime.Py.GIL())
@@ -34,16 +40,20 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
             tempFed.ParticipantList.RemoveAt(playerIndex);
  
         }
-
-
+        /*
+         * Disseminate fixed market asset to each Federation based on market share at the point of time.
+         */
         public void DisseminateGlobalMarketAsset(double FIXED_MARKET_SHARE)
         {
             foreach(Federation f in this.FederationList)
             {
-                f.FederationAsset += Math.Round((f.MarketShare * FIXED_MARKET_SHARE),2);
+                f.FederationAsset += Math.Round((f.MarketShare * FIXED_MARKET_SHARE),2); //rounding
             }
         }
 
+        /*
+         * For visualization purposes
+         */
         public void RecordFederationMktShareHistory()
         {
             foreach(Federation f in this.FederationList)

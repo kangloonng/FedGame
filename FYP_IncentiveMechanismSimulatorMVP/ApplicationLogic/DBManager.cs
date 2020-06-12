@@ -7,6 +7,9 @@ using FYP_IncentiveMechanismSimulatorMVP.Model;
 
 namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
 {
+    /*
+     * Used for connecting to database and managing ADO.net object creations
+     */
     public class DBManager
     {
         private List<Bids> _bidsHistory;
@@ -27,6 +30,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
             ParticipantsHistoryList = new List<ParticipantHistory>();
             _participantsList = new List<Participants>();
         }
+        //Uses ADO to link to database created tables
         #region ADO object modelling
         public void AddBid(Bid b, bool success)
         {
@@ -160,18 +164,32 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
         }
         #endregion
 
+        /*
+         * Saves directly to central database or as SQL commands into a text file
+         */
         public void saveGameInstance(int type)
         {
+            //modify database server here
+            //TODO: database server as input
             if (type == 1)
             {
+                #region Save to DB
                 var id = Guid.NewGuid().ToString();
-                string servername = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""H:\FYP Current\FYP_IncentiveMechanismSimulatorMVP\SimDatabase.mdf"";Integrated Security=True";
+                string servername = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\K\Desktop\GitHub22\GitHub copy\A Multi-player Game for Studying Federated Learning Incentive Schemes\FYP_IncentiveMechanismSimulatorMVP\SIMDATABASE.MDF"";Integrated Security=True";
                 //string servername = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""D:\FYP Current\FYP_IncentiveMechanismSimulatorMVP\SimDatabase.mdf"";Integrated Security=True";
                 //string servername2 = "Server=(LocalDB)\\MSSQLLocalDB;Database=Database1.mdf;Integrated Security=True;";
                 //MySqlConnection test = new MySqlConnection(servername2);
                 System.Data.SqlClient.SqlConnection con = new System.Data.SqlClient.SqlConnection();
                 con.ConnectionString = servername;
-                con.Open();
+                try
+                {
+                    con.Open();
+                }catch(Exception e)
+                {
+                    Console.WriteLine("Error accessing DB");
+                    this.saveGameInstance(2);
+                    return;
+                }
                 System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
                 cmd.CommandType = System.Data.CommandType.Text;
 
@@ -246,10 +264,11 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
                     cmd.ExecuteNonQuery();
                 }
                 con.Close();
-
+                #endregion
             }
             else
             {
+                #region Save to text file
                 StringBuilder sb = new StringBuilder();
                 sb.Append("INSERT INTO GameInstance(Gid,MarketShare,StartingAsset,MinTrainingLength,MaxTrainingLength,MinBidLength,MinProfitLength,NumFederations," +
     "NumPlayers,MinDataQuality,MaxDataQuality,MinDataQuantity,MaxDataQuantity,DataQualityWeight,DataQuantityWeight,MinResourceQuantity,MaxResourceQuantity,InitDataQualityTH,InitDataQuantityTH," +
@@ -310,6 +329,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
 
                 Utils.IOManager tempIO = new Utils.IOManager();
                 tempIO.CreateTextFile(sb.ToString());
+                #endregion
             }
         }
     }

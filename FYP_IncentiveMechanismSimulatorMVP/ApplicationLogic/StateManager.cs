@@ -5,11 +5,14 @@ using System.Text;
 using FYP_IncentiveMechanismSimulatorMVP.Model;
 namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
 {
+    /*
+     * Manages state of game system i.e. mainly the overall system's timeline. 
+     */
     public class StateManager
     {
         public StateEnum CurrentState { get; set; }
         public State CurrentStateModel { get; set; }
-        public Dictionary<int, double> GlobalProfitHistory { get; set; }
+        public Dictionary<int, double> GlobalProfitHistory { get; set; } //for record purposes
         public StateManager()
         {
             this.CurrentStateModel = new State();

@@ -5,6 +5,9 @@ using System.Text;
 using FYP_IncentiveMechanismSimulatorMVP.Model;
 namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
 {
+    /*
+     * Manages player objects creation, deletion and modification.
+     */
     public class PlayerManager
     {
         public List<Player> PlayerList { get; set; }
@@ -13,6 +16,10 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
         {
             this.PlayerList = new List<Player>();
         }
+        /*
+         * Creates player objects based on initial initialization. 
+         * Human player takes pid of 1; index 0.
+         */
         public void PopulatePlayers(int numUsers,List<Federation> federationList)
         {
             for(int i=0; i < numUsers; i++)
@@ -23,8 +30,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
                 else
                     tempPlayer = new EqualDistributionAgent(i + 1);
 
-                //tempPlayer.LocalStrategy = temp; // strategyList[0];
-                tempPlayer.InitList(federationList);
+                //tempPlayer.InitList(federationList);
                 this.PlayerList.Add(tempPlayer);                
             }
         }

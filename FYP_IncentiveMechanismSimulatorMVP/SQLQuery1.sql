@@ -19,3 +19,4 @@ DBCC CHECKIDENT ('Bids', RESEED, 0)
 SELECT * FROM GameInstance
 SELECT * FROM Federations
 SELECT * FROM Participants
+

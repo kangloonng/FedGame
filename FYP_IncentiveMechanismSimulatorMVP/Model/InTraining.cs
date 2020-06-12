@@ -39,6 +39,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
             this.LocalTrainingLength = NormalizationEqn(min_range, max_range, length, min_length,max_length);
             
         }
+        //minmax normilization
         private double NormalizationEqn(double min, double max, double value, double min_length, double max_length)
         {
             return Math.Round(((value - min_length) / (max_length - min_length)) * (max - min) + min,1);

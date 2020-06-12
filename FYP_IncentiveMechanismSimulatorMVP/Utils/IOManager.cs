@@ -8,6 +8,9 @@ using Python.Runtime;
 
 namespace FYP_IncentiveMechanismSimulatorMVP.Utils
 {
+    /*
+     * Controls most IO-related functions including, file settings reading, file path reading, Python integration
+     */
     public class IOManager
     {
         private string incentive_py_file_path = "";

@@ -16,6 +16,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Presenters
             this._IBidForm.player = Simulation.Instance._playerManager.PlayerList.Where(p=>p.Pid == Simulation.Instance.HumanPlayer.Pid).FirstOrDefault();
             this._IBidForm.federationList = Simulation.Instance._federationManager.FederationList.Where(f=>f.Current_state==StateEnum.BID_ROUND).ToList();
         }
+        
         public void GetPlayerBid(int pid, int fid)
         {
             this._IBidForm.playerBid = Simulation.Instance._bidManager.RetrievePlayerBid(pid, fid);

@@ -7,6 +7,13 @@ using Python.Runtime;
 
 namespace FYP_IncentiveMechanismSimulatorMVP.Utils
 {
+    /*
+     * Mainly used to interface with Python classes and files
+     * Current implementation framework:
+     * -Usage of single incentivescheme.py file
+     * -Consists of a util class and FL class
+     * -util class is to generate a python list based on parameter inputs so that the FL class object is able to receive this python list to calculate payoff
+     */
    public class PythonInterface
     {
         public dynamic MainModule { get; }
@@ -30,7 +37,7 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
                 }
             }
         }
-
+        //Creates Python class (new object) based on reference to FL class stored.
         public dynamic CreatePyScheme(int index, int num_players)
         {
             using (Py.GIL())
@@ -44,7 +51,10 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Utils
                 return obj;
             }
         }
-
+        /*
+         * Returns a list of payoff based on input participants list and their contributions
+         * Firstly creates a 'readable' python list containing participants' contribution, then obtaining payoff list from python class object
+         */
         public List<double> Calculate_Payoff(double budgetToAllocate, dynamic schemeObj, List<Player> participantList, double data_qual_weight, double data_quant_weight)
         {
             List<double> tempList = new List<double>();

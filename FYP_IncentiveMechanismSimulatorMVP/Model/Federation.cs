@@ -157,9 +157,5 @@ namespace FYP_IncentiveMechanismSimulatorMVP.Model
 
             //double toSplit = this.sc.CalculateProfitShare(playerList,this.MarketShare,Constants.FIXED_MARKETSHARE);
         }*/
-        private double calculateTrainingQuality(Player p, double dataQualityWeight, double dataQuantityWeight)
-        {
-            return (p.DataOwned.DataQuality * dataQualityWeight) + (p.DataOwned.DataQuantity * dataQuantityWeight);
-        }
     }
 }

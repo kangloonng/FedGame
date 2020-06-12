@@ -6,6 +6,10 @@ using FYP_IncentiveMechanismSimulatorMVP.Model;
 
 namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
 {
+    /*
+     * Manages the generation of allocation of randomized hands for players. 
+     * Assigns players a hand based on a Tuple list, and if needed, able to rotate allocation if in a setting required.
+     */
     public class AllocationManager
     {
         public List<Tuple<DataObject, Resource,double>> HandList;
@@ -14,7 +18,9 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
         {
             this.HandList = new List<Tuple<DataObject, Resource,double>>();
         }
-
+        /*
+         * Generates different hands based on the min-max settings from simulationSettings object.
+         */
         public void GenerateDifferentHands(int numOfPossibilities, SimulationSettings simulationSettings)
         {
             //double dataQuality, min = (Constants.DATAQUALITY_MIN+0.2), max = Constants.DATAQUALITY_MAX - 0.1;
@@ -25,7 +31,6 @@ namespace FYP_IncentiveMechanismSimulatorMVP.ApplicationLogic
             Random ran = new Random();
             for(int i=0; i < numOfPossibilities; i++)
             {
-                //dataQuantity = ran.Next((Constants.DATAQUANTITY_MAX / 2) - 3, (Constants.DATAQUANTITY_MAX / 2) + 3);
                 dataQuality = dataqlty_min + (dataqlty_max - dataqlty_min) * ran.NextDouble();
                 dataQuality = Math.Round(dataQuality, 2);
                 dataQuantity = dataqlty_min + (dataqty_max - dataqty_min) * ran.NextDouble();
