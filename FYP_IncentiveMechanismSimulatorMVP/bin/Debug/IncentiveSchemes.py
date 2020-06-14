@@ -101,18 +101,39 @@ class FL_indi(federal):
         
         payout_list = np.zeros(self.Env.N_players)
         
-        S = np.sum(np.array(current_bids)[:,3])
-        print("SUM ",S)
-        for index, one_bid in enumerate(current_bids):
-            data_quality = one_bid[1]
-            data_quantity = one_bid[2]
-            model_quality = one_bid[3]
-            c = one_bid[5]
-            if c == 0:
+        S=0
+        mu = [0] * self.Env.N_players
+        mu_real = [0] * self.Env.N_players
+        budget = self.Env.budget
+        for one_bid in current_bids:
+            id = one_bid[0]
+            D = one_bid[1]
+            q = one_bid[2]
+            c = one_bid[3]
+            if c==0 and D==0:
                 continue
-            
-            payout_list[index] = (model_quality/S) * self.Env.budget    
-        return np.array(payout_list)
+            mu[id-1]=self.Env.calc_budget(np.array([one_bid]))
+            S+=mu[id-1]
+
+        id_list = np.array(current_bids)[:, 0].astype(int)
+        for id in id_list:
+            if S==0 :
+                mu_real[id-1]=0
+            else:
+                mu_real[id-1]=mu[id-1]*budget/S
+
+        return np.array(mu_real)
+        
+##        for index, one_bid in enumerate(current_bids):
+##            data_quality = one_bid[1]
+##            data_quantity = one_bid[2]
+##            model_quality = one_bid[3]
+##            c = one_bid[5]
+##            if c == 0:
+##                continue
+##            
+##            payout_list[index] = (model_quality/S) * self.Env.budget    
+##        return np.array(payout_list)
 
 #considers total quantity of data contributed weighted by data quality   
 class FL_linear(federal):
@@ -127,7 +148,7 @@ class FL_linear(federal):
         payout_list=[]
         payout_list = np.zeros(self.Env.N_players)
         
-        S = sum(np.array(current_bids)[:,1])
+        S = sum(np.array(current_bids)[:,3])
         #print("Sum:", N_total_model)
 
         for index, one_bid in enumerate(current_bids):
@@ -139,7 +160,7 @@ class FL_linear(federal):
             if c ==0:
                 continue            
             
-            payout_list[index] = data_quality * self.Env.budget / S #((1.0*modelquality)/N_total_model) * self.Env.budget 
+            payout_list[index] = (model_quality/S) * self.Env.budget #((1.0*modelquality)/N_total_model) * self.Env.budget 
             #print(modelquality)
             
         return np.array(payout_list)#payout_list.tolist()
